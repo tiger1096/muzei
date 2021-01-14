@@ -55,7 +55,6 @@ import com.google.android.apps.muzei.sync.ProviderManager
 import com.google.android.apps.muzei.util.launchWhenStartedIn
 import com.google.android.apps.muzei.wallpaper.LockscreenObserver
 import com.google.android.apps.muzei.wallpaper.WallpaperAnalytics
-import com.google.android.apps.muzei.wearable.WearableController
 import com.google.android.apps.muzei.widget.WidgetUpdater
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
@@ -100,7 +99,6 @@ class MuzeiWallpaperService : GLWallpaperService(), LifecycleOwner {
             addObserver(WorkManagerInitializer.initializeObserver(this@MuzeiWallpaperService))
             addObserver(LegacySourceManager.getInstance(this@MuzeiWallpaperService))
             addObserver(NotificationUpdater(this@MuzeiWallpaperService))
-            addObserver(WearableController(this@MuzeiWallpaperService))
             addObserver(WidgetUpdater(this@MuzeiWallpaperService))
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
                 addObserver(ArtworkInfoShortcutController(this@MuzeiWallpaperService))
