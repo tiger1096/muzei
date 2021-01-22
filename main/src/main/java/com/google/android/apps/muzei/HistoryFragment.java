@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.apps.muzei.history.HistoryAdapter;
 
 import net.nurik.roman.muzei.R;
 import net.nurik.roman.muzei.databinding.HistoryFragmentBinding;
@@ -42,6 +45,9 @@ public class HistoryFragment extends Fragment {
 //        Toolbar mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
 //        mToolbar.inflateMenu(R.menu.history_pick);
         binding.toolbar.inflateMenu(R.menu.history_pick);
+
+        RecyclerView recyclerView = view.findViewById(R.id.history_list);
+        recyclerView.setAdapter(new HistoryAdapter());
 
     }
 }
