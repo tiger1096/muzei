@@ -57,6 +57,12 @@
     <string name="section_choose_source">Sources</string>
     <string name="section_effects">Effects</string>
 
+    <string name="section_history">History</string>
+    <string name="section_discover">Discover</string>
+    <string name="section_setting">Setting</string>
+    <string name="section_choose">Sources</string>
+    <string name="section_me">Me</string>
+
     <string name="action_next_artwork">Next artwork</string>
     <string name="action_next_artwork_condensed">Next</string>
     <string name="action_user_command">More</string>

@@ -76,7 +76,7 @@ class MainFragment : Fragment(R.layout.main_fragment), ChooseProviderFragment.Ca
         // Set up an OnDestinationChangedListener for analytics
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.main_art_details -> {
+                R.id.main_history -> {
                     Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
                         param(FirebaseAnalytics.Param.SCREEN_NAME, "ArtDetail")
                         param(FirebaseAnalytics.Param.SCREEN_CLASS,
@@ -107,7 +107,7 @@ class MainFragment : Fragment(R.layout.main_fragment), ChooseProviderFragment.Ca
             }
         }
         binding.bottomNav.setOnNavigationItemReselectedListener { item ->
-            if (item.itemId == R.id.main_art_details) {
+            if (item.itemId == R.id.main_history) {
                 activity?.window?.decorView?.systemUiVisibility = (View.SYSTEM_UI_FLAG_LOW_PROFILE
                         or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -174,6 +174,6 @@ class MainFragment : Fragment(R.layout.main_fragment), ChooseProviderFragment.Ca
     }
 
     override fun onRequestCloseActivity() {
-        binding.bottomNav.selectedItemId = R.id.main_art_details
+        binding.bottomNav.selectedItemId = R.id.main_history
     }
 }

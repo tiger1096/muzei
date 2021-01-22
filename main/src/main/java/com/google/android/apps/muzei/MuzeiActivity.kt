@@ -93,18 +93,18 @@ class MuzeiActivity : AppCompatActivity() {
                 }
                 else -> {
                     // Show the intro fragment to have them activate Muzei
-//                    Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
-//                        param(FirebaseAnalytics.Param.SCREEN_NAME, "Intro")
-//                        param(FirebaseAnalytics.Param.SCREEN_CLASS,
-//                                WelcomeFragment::class.java.simpleName)
-//                    }
-//                    WelcomeFragment()
                     Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
                         param(FirebaseAnalytics.Param.SCREEN_NAME, "Intro")
                         param(FirebaseAnalytics.Param.SCREEN_CLASS,
-                                IntroFragment::class.java.simpleName)
+                                WelcomeFragment::class.java.simpleName)
                     }
-                    IntroFragment()
+                    WelcomeFragment()
+//                    Firebase.analytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW) {
+//                        param(FirebaseAnalytics.Param.SCREEN_NAME, "Intro")
+//                        param(FirebaseAnalytics.Param.SCREEN_CLASS,
+//                                IntroFragment::class.java.simpleName)
+//                    }
+//                    IntroFragment()
                 }
             }.also {
                 updateRenderLocally(it is EffectsFragment)

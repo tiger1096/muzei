@@ -18,13 +18,13 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/main_art_details">
+    app:startDestination="@id/main_history">
 
     <fragment
-        android:id="@+id/main_art_details"
-        android:name="com.google.android.apps.muzei.ArtDetailFragment"
-        android:label="ArtDetailFragment"
-        tools:layout="@layout/art_detail_fragment">
+        android:id="@+id/main_history"
+        android:name="com.google.android.apps.muzei.HistoryFragment"
+        android:label="HistoryFragment"
+        tools:layout="@layout/choose_provider_fragment">
         <action
             android:id="@+id/gestures"
             app:destination="@+id/gestures_fragment"

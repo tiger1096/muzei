@@ -47,7 +47,7 @@ public class WelcomeFragment extends Fragment {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } catch (ActivityNotFoundException e) {
-
+//                    Log.e("alex", "WelcomeFragment ActivityNotFoundException");
                 }
             }
         });

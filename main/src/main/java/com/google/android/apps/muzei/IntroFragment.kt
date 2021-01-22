@@ -64,23 +64,23 @@ class IntroFragment : Fragment(R.layout.intro_fragment) {
                 }
             }
         }
-        if (childFragmentManager.findFragmentById(R.id.animated_logo_fragment) == null) {
-            val logoFragment = AnimatedMuzeiLogoFragment()
-            childFragmentManager.commitNow {
-                add(R.id.animated_logo_fragment, logoFragment)
-            }
-
-            binding.activateMuzei.alpha = 0f
-            logoFragment.onFillStarted = {
-                binding.activateMuzei.animate().alpha(1f).apply {
-                    duration = 500
-                }
-            }
-            binding.activateMuzei.postDelayed({
-                if (logoFragment.isAdded) {
-                    logoFragment.start()
-                }
-            }, 1000)
-        }
+//        if (childFragmentManager.findFragmentById(R.id.animated_logo_fragment) == null) {
+//            val logoFragment = AnimatedMuzeiLogoFragment()
+//            childFragmentManager.commitNow {
+//                add(R.id.animated_logo_fragment, logoFragment)
+//            }
+//
+//            binding.activateMuzei.alpha = 0f
+//            logoFragment.onFillStarted = {
+//                binding.activateMuzei.animate().alpha(1f).apply {
+//                    duration = 500
+//                }
+//            }
+//            binding.activateMuzei.postDelayed({
+//                if (logoFragment.isAdded) {
+//                    logoFragment.start()
+//                }
+//            }, 1000)
+//        }
     }
 }

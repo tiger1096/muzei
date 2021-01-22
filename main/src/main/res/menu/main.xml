@@ -16,15 +16,19 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/main_art_details"
+        android:id="@+id/main_history"
         android:title="@string/app_name"
         android:icon="@drawable/ic_stat_muzei"/>
     <item
         android:id="@+id/main_choose_provider"
-        android:title="@string/section_choose_source"
+        android:title="@string/section_choose"
         android:icon="@drawable/ic_main_choose_source"/>
     <item
-        android:id="@+id/main_effects"
-        android:title="@string/section_effects"
+        android:id="@+id/main_discover"
+        android:title="@string/section_discover"
+        android:icon="@drawable/ic_main_effects"/>
+    <item
+        android:id="@+id/main_setting"
+        android:title="@string/section_setting"
         android:icon="@drawable/ic_main_effects"/>
 </menu>

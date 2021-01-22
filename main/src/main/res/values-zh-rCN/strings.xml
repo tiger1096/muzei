@@ -51,6 +51,13 @@
     <string name="error_wallpaper_chooser">无法启动壁纸选择器。您仍然可以通过在主屏幕壁纸选择器中选择‘动态壁纸’启用 <xliff:g id="muzei_name">Muzei</xliff:g>。</string>
     <string name="section_choose_source">源</string>
     <string name="section_effects">效果</string>
+
+    <string name="section_history">历史</string>
+    <string name="section_discover">发现</string>
+    <string name="section_setting">设置</string>
+    <string name="section_choose">选图</string>
+    <string name="section_me">我</string>
+
     <string name="action_next_artwork">下一个作品</string>
     <string name="action_next_artwork_condensed">下一个</string>
     <string name="action_user_command">更多</string>
