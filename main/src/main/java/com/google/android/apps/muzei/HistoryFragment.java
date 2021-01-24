@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.apps.muzei.history.HistoryAdapter;
@@ -33,7 +34,7 @@ public class HistoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.choose_provider_fragment, container, false);
+        View root = inflater.inflate(R.layout.history_fragment, container, false);
         return root;
     }
 
@@ -47,7 +48,8 @@ public class HistoryFragment extends Fragment {
         binding.toolbar.inflateMenu(R.menu.history_pick);
 
         RecyclerView recyclerView = view.findViewById(R.id.history_list);
-        recyclerView.setAdapter(new HistoryAdapter());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
+        recyclerView.setAdapter(new HistoryAdapter());
     }
 }
