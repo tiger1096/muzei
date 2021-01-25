@@ -1,6 +1,7 @@
 package com.google.android.apps.muzei;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alexqzhang.service.WallpaperService;
 import com.google.android.apps.muzei.history.HistoryAdapter;
 
 import net.nurik.roman.muzei.R;
@@ -30,6 +32,9 @@ public class HistoryFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = new Intent(getActivity(), WallpaperService.class);
+        getActivity().startService(intent);
     }
 
     @Override

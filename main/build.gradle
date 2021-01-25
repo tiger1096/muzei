@@ -136,6 +136,8 @@ dependencies {
     implementation project(':source-gallery')
     implementation project(':source-single')
     implementation project(':gl-wallpaper')
+    implementation project(':service_wallpaper')
+    implementation project(':service_polling')
 }
 
 apply plugin: 'com.google.gms.google-services'
