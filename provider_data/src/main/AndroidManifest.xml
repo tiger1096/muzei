@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.alexqzhang.provider">
+    <permission
+        android:name="com.straw.providerhost.course.read"
+        android:protectionLevel="normal"/>
+    <permission
+        android:name="com.straw.providerhost.course.write"
+        android:protectionLevel="normal"/>
+    <application
+        android:supportsRtl="true"
+        tools:targetApi="30">
+
+        <provider
+            android:authorities="com.alexqzhang.data"
+            android:name="com.alexqzhang.provider.DataProvider"
+            android:exported="true"
+            android:readPermission="com.alexqzhang.data.read"
+            android:writePermission="com.alexqzhang.data.write">
+        </provider>
+
+    </application>
+
+</manifest>

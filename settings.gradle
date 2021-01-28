@@ -1,3 +1,4 @@
+include ':provider_data'
 include ':service_polling'
 include ':service_wallpaper'
 include ':muzei-api'
