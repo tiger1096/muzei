@@ -2,9 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.alexqzhang.service">
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <application
         android:supportsRtl="true"
         tools:targetApi="30">
+
+        <receiver
+            android:name="com.alexqzhang.receiver.ScreenStatusReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name="com.alexqzhang.receiver.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.MEDIA_UNMOUNTABLE" />
+                <action android:name="android.intent.action.MEDIA_EJECT" />
+
+                <data android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="RestartSerivcesForSystemEventReceiver" />
+            </intent-filter>
+        </receiver>
 
         <service
             android:name="com.alexqzhang.service.WallpaperService"

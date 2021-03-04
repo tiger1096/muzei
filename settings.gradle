@@ -1,3 +1,5 @@
+include ':print_base'
+include ':print_service'
 include ':provider_data'
 include ':service_polling'
 include ':service_wallpaper'
