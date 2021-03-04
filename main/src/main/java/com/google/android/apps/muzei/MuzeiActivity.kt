@@ -19,8 +19,15 @@ package com.google.android.apps.muzei
 import android.app.Activity
 import android.app.Application
 import android.app.Notification
+import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.PowerManager
+import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +55,7 @@ import kotlinx.coroutines.flow.onEach
 import net.nurik.roman.muzei.BuildConfig
 import net.nurik.roman.muzei.R
 import net.nurik.roman.muzei.databinding.MuzeiActivityBinding
+import kotlin.concurrent.thread
 
 private const val PREVIEW_MODE = "android.service.wallpaper.PREVIEW_MODE"
 val Activity.isPreviewMode get() = intent?.extras?.getBoolean(PREVIEW_MODE) == true
@@ -181,6 +189,25 @@ class MuzeiActivity : AppCompatActivity() {
             }
 
             fadeIn = false
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
+            if (powerManager != null) {
+                val isIgnoring = powerManager.isIgnoringBatteryOptimizations(packageName)
+                Log.e("alex", "isIgnoring = " + isIgnoring)
+
+                if (!isIgnoring) {
+                    Thread {
+                        val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                        intent.data = Uri.parse("package:$packageName")
+                        startActivity(intent)
+                    }.start()
+                }
+
+            }
+        } else {
+            Log.e("alex", "isIgnoring no")
         }
     }
 
