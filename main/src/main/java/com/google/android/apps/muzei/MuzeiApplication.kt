@@ -16,12 +16,16 @@
 
 package com.google.android.apps.muzei
 
+import android.app.ActivityManager
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
+import android.os.Process
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.multidex.MultiDexApplication
+import com.alexqzhang.service.WallpaperService
 import com.google.android.apps.muzei.settings.Prefs
 
 class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -44,6 +48,28 @@ class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPrefer
         updateNightMode()
         val sharedPreferences = Prefs.getSharedPreferences(this)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+
+        // 当主线程启动的时候，将启动wallpaper service
+        val processName = getProcessName(this)
+        if (processName != null && !processName.contains("wallpaper")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                this.startForegroundService(Intent(this, WallpaperService::class.java))
+            } else {
+                this.startService(Intent(this, WallpaperService::class.java))
+            }
+        }
+    }
+
+    fun getProcessName(cxt: Context): String? {
+        val pid = Process.myPid()
+        val am = cxt.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val runningApps = am.runningAppProcesses ?: return null
+        for (procInfo in runningApps) {
+            if (procInfo.pid == pid) {
+                return procInfo.processName
+            }
+        }
+        return null
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {

@@ -34,4 +34,14 @@ public class WallpaperService extends Service {
 
         super.onDestroy();
     }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
+        super.onTrimMemory(level);
+    }
 }
