@@ -10,4 +10,9 @@ public class PrintService {
                                TextConfig textConfig) {
         return inputBitmap;
     }
+
+    public static Bitmap crop(Bitmap inputBitmap, int width, int height) {
+        Bitmap outputBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        return inputBitmap;
+    }
 }
