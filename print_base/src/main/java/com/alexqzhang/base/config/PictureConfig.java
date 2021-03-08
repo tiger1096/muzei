@@ -9,5 +9,8 @@ public class PictureConfig {
     public int blankWidth;
     public int blankHeight;
 
-    public boolean isVerticle; // 是否优先竖排版
+    public int screenWidth;
+    public int screenHeight;
+
+    public boolean isVerticle = false; // 是否优先竖排版
 }

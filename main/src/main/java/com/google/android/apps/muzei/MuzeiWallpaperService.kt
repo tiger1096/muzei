@@ -38,6 +38,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.lifecycleScope
+import com.alexqzhang.service.WallpaperService
 import com.google.android.apps.muzei.featuredart.BuildConfig.FEATURED_ART_AUTHORITY
 import com.google.android.apps.muzei.legacy.LegacySourceManager
 import com.google.android.apps.muzei.notifications.NotificationUpdater
@@ -308,12 +309,14 @@ class MuzeiWallpaperService : GLWallpaperService(), LifecycleOwner {
         ): Bundle? {
             // validDoubleTap previously set in the gesture listener
             if (WallpaperManager.COMMAND_TAP == action && validDoubleTap) {
-                val prefs = Prefs.getSharedPreferences(this@MuzeiWallpaperService)
-                val doubleTapValue = prefs.getString(Prefs.PREF_DOUBLE_TAP,
-                        null) ?: Prefs.PREF_TAP_ACTION_TEMP
-                triggerTapAction(doubleTapValue, "gesture_double_tap")
-                // Reset the flag
-                validDoubleTap = false
+                startService(Intent(applicationContext, WallpaperService::class.java))
+
+//                val prefs = Prefs.getSharedPreferences(this@MuzeiWallpaperService)
+//                val doubleTapValue = prefs.getString(Prefs.PREF_DOUBLE_TAP,
+//                        null) ?: Prefs.PREF_TAP_ACTION_TEMP
+//                triggerTapAction(doubleTapValue, "gesture_double_tap")
+//                // Reset the flag
+//                validDoubleTap = false
             }
             return super.onCommand(action, x, y, z, extras, resultRequested)
         }
