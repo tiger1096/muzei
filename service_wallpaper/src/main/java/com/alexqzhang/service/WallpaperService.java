@@ -15,6 +15,7 @@ import com.alexqzhang.base.config.PictureConfig;
 import com.alexqzhang.base.config.TextConfig;
 import com.alexqzhang.base.data.ZFont;
 import com.alexqzhang.print.PrintService;
+import com.alexqzhang.print.utils.BitmapUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class WallpaperService extends Service {
         textConfig.style = 0;
         textConfig.textNum = 2;
         textConfig.texts = new ArrayList<>();
-        int index = (new Random()).nextInt() % (poems.size());
+        int index = Math.abs((new Random()).nextInt()) % (poems.size());
         textConfig.texts = poems.get(index);
         textConfig.fonts = new ArrayList<>();
         textConfig.fonts.add(new ZFont(16, 0));
@@ -95,6 +96,8 @@ public class WallpaperService extends Service {
         Bitmap inputBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.river);
 
         Bitmap outputBitmap = PrintService.print(inputBitmap, pictureConfig, textConfig);
+        Log.e("alex", "WallpaperService onStartCommand");
+        BitmapUtil.saveBitmap2PNG(outputBitmap, getApplicationContext(), "river_" + System.currentTimeMillis() + ".png");
 
         try {
             WallpaperManager.getInstance(getApplicationContext()).setBitmap(outputBitmap);
