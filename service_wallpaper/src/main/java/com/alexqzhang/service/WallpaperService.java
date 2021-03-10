@@ -93,7 +93,7 @@ public class WallpaperService extends Service {
         textConfig.fonts.add(new ZFont(16, 0));
         textConfig.fonts.add(new ZFont(16, 0));
 
-        Bitmap inputBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.river);
+        Bitmap inputBitmap = BitmapUtil.getBitmapFromAssets(getApplicationContext(), "river.jpg");
 
         Bitmap outputBitmap = PrintService.print(inputBitmap, pictureConfig, textConfig);
         Log.e("alex", "WallpaperService onStartCommand");

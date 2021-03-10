@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -21,6 +22,8 @@ public class PrintService {
             return inputBitmap;
         }
 
+        Log.e("alex", "inputBitmap = " + inputBitmap.getWidth() + ", " + inputBitmap.getHeight());
+        Log.e("alex", "screenWidth = " + pictureConfig.screenWidth + ", " + pictureConfig.screenHeight);
         Bitmap cropBitmap = crop(inputBitmap,
                 pictureConfig.screenWidth, pictureConfig.screenHeight);
         Bitmap outputBitmap = write(cropBitmap, pictureConfig, textConfig);
@@ -56,28 +59,19 @@ public class PrintService {
 
     public static Bitmap write(Bitmap inputBitmap, PictureConfig pictureConfig,
                                TextConfig textConfig) {
+        Bitmap outputBitmap = inputBitmap.copy(Bitmap.Config.ARGB_8888, true);
 
-        Bitmap newb = Bitmap.createBitmap(inputBitmap.getWidth(), inputBitmap.getHeight(),
-                Bitmap.Config.ARGB_8888);
-//        Bitmap outputBitmap = inputBitmap.copy(Bitmap.Config.ARGB_8888, true);
-
-        Canvas canvas = new Canvas(newb);
-        canvas.drawBitmap(inputBitmap, 0, 0, null);
-
-        TextPaint paint = new TextPaint();
-        paint.setColor(Color.RED);
-        paint.setAlpha(1);
-//        paint.setDither(true);
-//        paint.setFilterBitmap(true);
+        Canvas canvas = new Canvas(outputBitmap);
+        TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTypeface(Typeface.DEFAULT);
+        paint.setTextSize(120);
+        paint.setColor(Color.BLACK);
 
         String text = textConfig.texts.get(0);
-        paint.setTextSize(60);
-//        paint.setTextSize(textConfig.fonts.get(0).size);
-        canvas.drawText("hello world", 50, 50, paint);
-        Log.e("alex", "drawText : " + text);
-        return newb;
-//        canvas.drawText(text, pictureConfig.blankX, pictureConfig.blankY, paint);
-
+        canvas.drawText(text, pictureConfig.blankX, pictureConfig.blankY, paint);
+        canvas.save();
+        canvas.restore();
+        return outputBitmap;
 
 //        for (int i = 0; i < textConfig.textNum; i ++) {
 //            String text = textConfig.texts.get(i);

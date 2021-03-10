@@ -1,14 +1,37 @@
 package com.alexqzhang.print.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class BitmapUtil {
+
+    public static Bitmap getBitmapFromAssets(Context context, String path) {
+        if (context == null || TextUtils.isEmpty(path)) {
+            return null;
+        }
+
+        Bitmap bitmap = null;
+        AssetManager assetManager = context.getAssets();
+        try {
+            InputStream is = assetManager.open(path);
+            bitmap = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return bitmap;
+    }
+
     public static boolean isIllegal(Bitmap bitmap) {
         return bitmap != null && !bitmap.isRecycled();
     }
