@@ -20,6 +20,8 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.opengl.GLES20
+import com.alexqzhang.print.utils.BitmapUtil
+import com.alexqzhang.print.utils.RenderUtil
 import com.google.android.apps.muzei.util.divideRoundUp
 import java.nio.FloatBuffer
 import kotlin.math.min
@@ -194,6 +196,8 @@ internal class GLPicture @SuppressLint("CheckResult") internal constructor(
                         textureHandles[y * numColumns + x])
                 GLUtil.checkGlError("glBindTexture")
 
+//                val bitmap = RenderUtil.saveTexture(textureHandles[y * numColumns + x], 100, 100)
+//                BitmapUtil.saveBitmap2PNG(bitmap, null, "test.png");
                 // Draw the two triangles
                 GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertices.size / COORDS_PER_VERTEX)
             }

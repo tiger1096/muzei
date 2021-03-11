@@ -128,6 +128,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
+    implementation project(':print_base')
+    implementation project(':print_service')
+
     implementation project(':muzei-api')
     implementation project(':extensions')
     implementation project(':legacy-common')
