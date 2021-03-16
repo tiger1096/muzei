@@ -523,7 +523,7 @@ class MuzeiBlurRenderer(
                         return
                     }
 
-                    pictures[lo]?.draw(mvpMatrix, globalAlpha)
+                    pictures[lo]?.draw(mvpMatrix, globalAlpha, context)
                 }
                 globalAlpha == 1f -> {
                     // Simple drawing
@@ -531,8 +531,8 @@ class MuzeiBlurRenderer(
                         return
                     }
 
-                    pictures[lo]?.draw(mvpMatrix, 1f)
-                    pictures[hi]?.draw(mvpMatrix, localHiAlpha)
+                    pictures[lo]?.draw(mvpMatrix, 1f, context)
+                    pictures[hi]?.draw(mvpMatrix, localHiAlpha, context)
                 }
                 else -> {
                     // If there's both a global and local alpha, re-compose alphas, to
@@ -548,8 +548,8 @@ class MuzeiBlurRenderer(
 
                     val newLocalLoAlpha = globalAlpha * (localHiAlpha - 1) / (globalAlpha * localHiAlpha - 1)
                     val newLocalHiAlpha = globalAlpha * localHiAlpha
-                    pictures[lo]?.draw(mvpMatrix, newLocalLoAlpha)
-                    pictures[hi]?.draw(mvpMatrix, newLocalHiAlpha)
+                    pictures[lo]?.draw(mvpMatrix, newLocalLoAlpha, context)
+                    pictures[hi]?.draw(mvpMatrix, newLocalHiAlpha, context)
                 }
             }
         }

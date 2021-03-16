@@ -17,10 +17,13 @@
 package com.google.android.apps.muzei.render
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Rect
 import android.opengl.GLES20
+import com.alexqzhang.print.TestPrint
 import com.alexqzhang.print.utils.BitmapUtil
+import com.alexqzhang.print.utils.GlUtil
 import com.alexqzhang.print.utils.RenderUtil
 import com.google.android.apps.muzei.util.divideRoundUp
 import java.nio.FloatBuffer
@@ -148,7 +151,7 @@ internal class GLPicture @SuppressLint("CheckResult") internal constructor(
         }
     }
 
-    fun draw(mvpMatrix: FloatArray, alpha: Float) {
+    fun draw(mvpMatrix: FloatArray, alpha: Float, context: Context) {
         // Add program to OpenGL ES environment
         GLES20.glUseProgram(PROGRAM_HANDLE)
 
@@ -173,38 +176,88 @@ internal class GLPicture @SuppressLint("CheckResult") internal constructor(
         // Set the alpha
         GLES20.glUniform1f(UNIFORM_ALPHA_HANDLE, alpha)
 
+
         // Draw tiles
-        for (y in 0 until numRows) {
-            for (x in 0 until numColumns) {
-                // Pass in the vertex information
-                vertices[9] = min(-1 + 2f * x.toFloat() * TILE_SIZE.toFloat() / width, 1f)
-                vertices[3] = vertices[9]
-                vertices[0] = vertices[3] // left
-                vertices[16] = min(-1 + 2f * (y + 1).toFloat() * TILE_SIZE.toFloat() / height, 1f)
-                vertices[10] = vertices[16]
-                vertices[1] = vertices[10] // top
-                vertices[15] = min(-1 + 2f * (x + 1).toFloat() * TILE_SIZE.toFloat() / width, 1f)
-                vertices[12] = vertices[15]
-                vertices[6] = vertices[12] // right
-                vertices[13] = min(-1 + 2f * y.toFloat() * TILE_SIZE.toFloat() / height, 1f)
-                vertices[7] = vertices[13]
-                vertices[4] = vertices[7] // bottom
-                vertexBuffer.put(vertices)
-                vertexBuffer.position(0)
+        // Pass in the vertex information
+        vertices[0] = -1f;
+        vertices[1] = 1f;
+        vertices[2] = 0f;
+        vertices[3] = -1f;
+        vertices[4] = -1f;
+        vertices[5] = 0f;
+        vertices[6] = 1f;
+        vertices[7] = -1f;
+        vertices[8] = 0f;
+        vertices[9] = -1f;
+        vertices[10] = 1f;
+        vertices[11] = 0f;
+        vertices[12] = 1f;
+        vertices[13] = -1f;
+        vertices[14] = 0f;
+        vertices[15] = 1f;
+        vertices[16] = 1f;
+        vertices[17] = 0f;
 
-                GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,
-                        textureHandles[y * numColumns + x])
-                GLUtil.checkGlError("glBindTexture")
+//        vertices[9] = -1f
+//        vertices[3] = vertices[9]
+//        vertices[0] = vertices[3] // left
+//        vertices[16] = min(-1 + 2f  * TILE_SIZE.toFloat() / height, 1f)
+//        vertices[10] = vertices[16]
+//        vertices[1] = vertices[10] // top
+//        vertices[15] = min(-1 + 2f * TILE_SIZE.toFloat() / width, 1f)
+//        vertices[12] = vertices[15]
+//        vertices[6] = vertices[12] // right
+//        vertices[13] = -1f
+//        vertices[7] = vertices[13]
+//        vertices[4] = vertices[7] // bottom
+        vertexBuffer.put(vertices)
+        vertexBuffer.position(0)
 
-//                val bitmap = RenderUtil.saveTexture(textureHandles[y * numColumns + x], 100, 100)
-//                BitmapUtil.saveBitmap2PNG(bitmap, null, "test.png");
-                // Draw the two triangles
-                GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertices.size / COORDS_PER_VERTEX)
-            }
-        }
+        val bitmap = TestPrint.genBitmap(context, 1440, 2560)
+
+        GlUtil.loadTexture(textureHandles[0], bitmap)
+
+//        val bitmap = RenderUtil.saveTexture(textureHandles[y * numColumns + x], 300, 300)
+//        BitmapUtil.saveBitmap2PNG(bitmap, context, "test_" +
+//                System.currentTimeMillis() + "_" + x + "*" + y + ".png");
+        // Draw the two triangles
+        GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertices.size / COORDS_PER_VERTEX)
+
+//        // Draw tiles
+//        for (y in 0 until numRows) {
+//            for (x in 0 until numColumns) {
+//                // Pass in the vertex information
+//                vertices[9] = min(-1 + 2f * x.toFloat() * TILE_SIZE.toFloat() / width, 1f)
+//                vertices[3] = vertices[9]
+//                vertices[0] = vertices[3] // left
+//                vertices[16] = min(-1 + 2f * (y + 1).toFloat() * TILE_SIZE.toFloat() / height, 1f)
+//                vertices[10] = vertices[16]
+//                vertices[1] = vertices[10] // top
+//                vertices[15] = min(-1 + 2f * (x + 1).toFloat() * TILE_SIZE.toFloat() / width, 1f)
+//                vertices[12] = vertices[15]
+//                vertices[6] = vertices[12] // right
+//                vertices[13] = min(-1 + 2f * y.toFloat() * TILE_SIZE.toFloat() / height, 1f)
+//                vertices[7] = vertices[13]
+//                vertices[4] = vertices[7] // bottom
+//                vertexBuffer.put(vertices)
+//                vertexBuffer.position(0)
+//
+//                GLES20.glBindTexture(GLES20.GL_TEXTURE_2D,
+//                        textureHandles[y * numColumns + x])
+//                GLUtil.checkGlError("glBindTexture")
+//
+////                val bitmap = RenderUtil.saveTexture(textureHandles[y * numColumns + x], 300, 300)
+////                BitmapUtil.saveBitmap2PNG(bitmap, context, "test_" +
+////                        System.currentTimeMillis() + "_" + x + "*" + y + ".png");
+//                // Draw the two triangles
+//                GLES20.glDrawArrays(GLES20.GL_TRIANGLES, 0, vertices.size / COORDS_PER_VERTEX)
+//            }
+//        }
 
         GLES20.glDisableVertexAttribArray(ATTRIB_POSITION_HANDLE)
         GLES20.glDisableVertexAttribArray(ATTRIB_TEXTURE_COORDS_HANDLE)
+
+
     }
 
     fun destroy() {

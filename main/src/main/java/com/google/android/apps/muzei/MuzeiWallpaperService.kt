@@ -27,6 +27,7 @@ import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
+import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.SurfaceHolder
@@ -309,14 +310,20 @@ class MuzeiWallpaperService : GLWallpaperService(), LifecycleOwner {
         ): Bundle? {
             // validDoubleTap previously set in the gesture listener
             if (WallpaperManager.COMMAND_TAP == action && validDoubleTap) {
-                startService(Intent(applicationContext, WallpaperService::class.java))
+                Log.e("Performance", "before startService WallpaperService")
+//                val intent = Intent(applicationContext, WallpaperService::class.java).apply {
+//                    setAction("android.service.wallpaper.WallpaperService")
+//                }
+//                startService(intent)
+//                Log.e("Performance", "after startService WallpaperService")
+//                startService(Intent(applicationContext, WallpaperService::class.java))
 
-//                val prefs = Prefs.getSharedPreferences(this@MuzeiWallpaperService)
-//                val doubleTapValue = prefs.getString(Prefs.PREF_DOUBLE_TAP,
-//                        null) ?: Prefs.PREF_TAP_ACTION_TEMP
-//                triggerTapAction(doubleTapValue, "gesture_double_tap")
-//                // Reset the flag
-//                validDoubleTap = false
+                val prefs = Prefs.getSharedPreferences(this@MuzeiWallpaperService)
+                val doubleTapValue = prefs.getString(Prefs.PREF_DOUBLE_TAP,
+                        null) ?: Prefs.PREF_TAP_ACTION_TEMP
+                triggerTapAction(doubleTapValue, "gesture_double_tap")
+                // Reset the flag
+                validDoubleTap = false
             }
             return super.onCommand(action, x, y, z, extras, resultRequested)
         }
@@ -334,28 +341,28 @@ class MuzeiWallpaperService : GLWallpaperService(), LifecycleOwner {
                         delayedBlur()
                     }
                 }
-                Prefs.PREF_TAP_ACTION_NEXT -> {
-                    lifecycleScope.launch(NonCancellable) {
-                        Firebase.analytics.logEvent("next_artwork") {
-                            param(FirebaseAnalytics.Param.CONTENT_TYPE, type)
-                        }
-                        LegacySourceManager.getInstance(this@MuzeiWallpaperService).nextArtwork()
-                    }
-                }
-                Prefs.PREF_TAP_ACTION_VIEW_DETAILS -> {
-                    lifecycleScope.launch(NonCancellable) {
-                        val artwork = MuzeiDatabase
-                                .getInstance(this@MuzeiWallpaperService)
-                                .artworkDao()
-                                .getCurrentArtwork()
-                        artwork?.run {
-                            Firebase.analytics.logEvent("artwork_info_open") {
-                                param(FirebaseAnalytics.Param.CONTENT_TYPE, type)
-                            }
-                            openArtworkInfo(this@MuzeiWallpaperService)
-                        }
-                    }
-                }
+//                Prefs.PREF_TAP_ACTION_NEXT -> {
+//                    lifecycleScope.launch(NonCancellable) {
+//                        Firebase.analytics.logEvent("next_artwork") {
+//                            param(FirebaseAnalytics.Param.CONTENT_TYPE, type)
+//                        }
+//                        LegacySourceManager.getInstance(this@MuzeiWallpaperService).nextArtwork()
+//                    }
+//                }
+//                Prefs.PREF_TAP_ACTION_VIEW_DETAILS -> {
+//                    lifecycleScope.launch(NonCancellable) {
+//                        val artwork = MuzeiDatabase
+//                                .getInstance(this@MuzeiWallpaperService)
+//                                .artworkDao()
+//                                .getCurrentArtwork()
+//                        artwork?.run {
+//                            Firebase.analytics.logEvent("artwork_info_open") {
+//                                param(FirebaseAnalytics.Param.CONTENT_TYPE, type)
+//                            }
+//                            openArtworkInfo(this@MuzeiWallpaperService)
+//                        }
+//                    }
+//                }
             }
         }
 

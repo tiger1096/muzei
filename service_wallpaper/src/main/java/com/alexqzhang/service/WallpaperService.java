@@ -67,46 +67,49 @@ public class WallpaperService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.e("alex", "WallpaperService onStartCommand");
-
-        DisplayMetrics dm = new DisplayMetrics();
-        dm = getResources().getDisplayMetrics();
-
-        PictureConfig pictureConfig = new PictureConfig();
-        pictureConfig.width = 1440;
-        pictureConfig.height = 2560;
-        pictureConfig.style = 0;
-        pictureConfig.blankX = 120;
-        pictureConfig.blankY = 240;
-        pictureConfig.blankWidth = 1200;
-        pictureConfig.blankHeight = 560;
-        pictureConfig.screenWidth = dm.widthPixels;
-        pictureConfig.screenHeight = dm.heightPixels;
-        pictureConfig.isVerticle = false;
-
-        TextConfig textConfig = new TextConfig();
-        textConfig.style = 0;
-        textConfig.textNum = 2;
-        textConfig.texts = new ArrayList<>();
-        int index = Math.abs((new Random()).nextInt()) % (poems.size());
-        textConfig.texts = poems.get(index);
-        textConfig.fonts = new ArrayList<>();
-        textConfig.fonts.add(new ZFont(16, 0));
-        textConfig.fonts.add(new ZFont(16, 0));
-
-        Bitmap inputBitmap = BitmapUtil.getBitmapFromAssets(getApplicationContext(), "river.jpg");
-
-        Bitmap outputBitmap = PrintService.print(inputBitmap, pictureConfig, textConfig);
-        Log.e("alex", "WallpaperService onStartCommand");
-        BitmapUtil.saveBitmap2PNG(outputBitmap, getApplicationContext(), "river_" + System.currentTimeMillis() + ".png");
-
-        try {
-            WallpaperManager.getInstance(getApplicationContext()).setBitmap(outputBitmap);
-        } catch (IOException e) {
-            Log.e("alex", e.getMessage());
-            e.printStackTrace();
-        }
         return super.onStartCommand(intent, flags, startId);
 
+//        DisplayMetrics dm = new DisplayMetrics();
+//        dm = getResources().getDisplayMetrics();
+//
+//        PictureConfig pictureConfig = new PictureConfig();
+//        pictureConfig.width = 1440;
+//        pictureConfig.height = 2560;
+//        pictureConfig.style = 0;
+//        pictureConfig.blankX = 120;
+//        pictureConfig.blankY = 240;
+//        pictureConfig.blankWidth = 1200;
+//        pictureConfig.blankHeight = 560;
+//        pictureConfig.screenWidth = dm.widthPixels;
+//        pictureConfig.screenHeight = dm.heightPixels;
+//        pictureConfig.isVerticle = false;
+//
+//        TextConfig textConfig = new TextConfig();
+//        textConfig.style = 0;
+//        textConfig.textNum = 2;
+//        textConfig.texts = new ArrayList<>();
+//        int index = Math.abs((new Random()).nextInt()) % (poems.size());
+//        textConfig.texts = poems.get(index);
+//        textConfig.fonts = new ArrayList<>();
+//        textConfig.fonts.add(new ZFont(16, 0));
+//        textConfig.fonts.add(new ZFont(16, 0));
+//
+//        long startTime = System.currentTimeMillis();
+//        Bitmap inputBitmap = BitmapUtil.getBitmapFromAssets(getApplicationContext(), "river.jpg");
+//        Log.e("Performance", "getBitmapFromAssets cost : " + (System.currentTimeMillis() - startTime));
+//
+//        startTime = System.currentTimeMillis();
+//        Bitmap outputBitmap = PrintService.print(inputBitmap, pictureConfig, textConfig);
+//        Log.e("Performance", "PrintService.print cost : " + (System.currentTimeMillis() - startTime));
+//
+//        try {
+//            WallpaperManager.getInstance(this).setBitmap(outputBitmap);
+//        } catch (IOException e) {
+//            Log.e("fuck", e.getMessage());
+//            e.printStackTrace();
+//        }
+//        return super.onStartCommand(intent, flags, startId);
+//
     }
 
     @Override
