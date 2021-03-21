@@ -24,28 +24,28 @@ import android.content.IntentFilter
 import androidx.core.os.UserManagerCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.google.android.apps.muzei.MuzeiWallpaperService
+import com.alexqzhang.glorious.service.AlexWallpaperService
 
 /**
  * LifecycleObserver responsible for monitoring the state of the lock screen
  */
 class LockscreenObserver(
         private val context: Context,
-        private val engine: MuzeiWallpaperService.MuzeiWallpaperEngine
+        private val engine: AlexWallpaperService.AlexEngine
 ) : DefaultLifecycleObserver {
 
     private val lockScreenVisibleReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
-            when (intent?.action) {
-                Intent.ACTION_USER_PRESENT -> engine.lockScreenVisibleChanged(false)
-                Intent.ACTION_SCREEN_OFF -> engine.lockScreenVisibleChanged(true)
-                Intent.ACTION_SCREEN_ON -> {
-                    val kgm = context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
-                    if (!kgm.isKeyguardLocked) {
-                        engine.lockScreenVisibleChanged(false)
-                    }
-                }
-            }
+//            when (intent?.action) {
+//                Intent.ACTION_USER_PRESENT -> engine.lockScreenVisibleChanged(false)
+//                Intent.ACTION_SCREEN_OFF -> engine.lockScreenVisibleChanged(true)
+//                Intent.ACTION_SCREEN_ON -> {
+//                    val kgm = context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+//                    if (!kgm.isKeyguardLocked) {
+//                        engine.lockScreenVisibleChanged(false)
+//                    }
+//                }
+//            }
         }
     }
 
@@ -59,7 +59,7 @@ class LockscreenObserver(
         // If the user is not yet unlocked (i.e., using Direct Boot), we should
         // immediately send the lock screen visible callback
         if (!UserManagerCompat.isUserUnlocked(context)) {
-            engine.lockScreenVisibleChanged(true)
+//            engine.lockScreenVisibleChanged(true)
         }
     }
 

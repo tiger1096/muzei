@@ -25,6 +25,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
+import com.alexqzhang.glorious.service.AlexWallpaperService
 import com.google.android.apps.muzei.util.AnimatedMuzeiLogoFragment
 import com.google.android.apps.muzei.util.toast
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -53,7 +54,7 @@ class IntroFragment : Fragment(R.layout.intro_fragment) {
                 startActivity(Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER)
                         .putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
                                 ComponentName(requireContext(),
-                                        MuzeiWallpaperService::class.java))
+                                        AlexWallpaperService::class.java))
                         .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             } catch (e: ActivityNotFoundException) {
                 try {

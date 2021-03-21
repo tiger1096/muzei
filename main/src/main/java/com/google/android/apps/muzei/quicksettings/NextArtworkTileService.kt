@@ -30,7 +30,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.lifecycleScope
-import com.google.android.apps.muzei.MuzeiWallpaperService
+import com.alexqzhang.glorious.service.AlexWallpaperService
 import com.google.android.apps.muzei.legacy.LegacySourceManager
 import com.google.android.apps.muzei.legacy.allowsNextArtwork
 import com.google.android.apps.muzei.room.MuzeiDatabase
@@ -130,7 +130,7 @@ class NextArtworkTileService : TileService(), LifecycleOwner {
                         startActivityAndCollapse(Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER)
                                 .putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
                                         ComponentName(context,
-                                                MuzeiWallpaperService::class.java))
+                                                AlexWallpaperService::class.java))
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
                     } catch (_: ActivityNotFoundException) {
                         try {

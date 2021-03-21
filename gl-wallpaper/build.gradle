@@ -30,3 +30,8 @@ android {
         publicDebug
     }
 }
+
+dependencies {
+    implementation project(':print_base')
+    implementation project(':print_service')
+}

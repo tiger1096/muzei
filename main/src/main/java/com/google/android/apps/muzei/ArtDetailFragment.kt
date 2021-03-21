@@ -298,14 +298,14 @@ class ArtDetailFragment : Fragment(R.layout.art_detail_fragment) {
             }
         }
 
-        WallpaperSizeStateFlow.filterNotNull().onEach { size ->
-            wallpaperAspectRatio = if (size.height > 0) {
-                size.width * 1f / size.height
-            } else {
-                binding.panScaleProxy.width * 1f / binding.panScaleProxy.height
-            }
-            resetProxyViewport()
-        }.launchWhenStartedIn(viewLifecycleOwner)
+//        WallpaperSizeStateFlow.filterNotNull().onEach { size ->
+//            wallpaperAspectRatio = if (size.height > 0) {
+//                size.width * 1f / size.height
+//            } else {
+//                binding.panScaleProxy.width * 1f / binding.panScaleProxy.height
+//            }
+//            resetProxyViewport()
+//        }.launchWhenStartedIn(viewLifecycleOwner)
 
         ArtworkSizeStateFlow.filterNotNull().onEach { size ->
             artworkAspectRatio = size.width * 1f / size.height

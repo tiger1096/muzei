@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alexqzhang.glorious.service.AlexWallpaperService;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -43,7 +45,7 @@ public class WelcomeFragment extends Fragment {
                 try {
                     Intent intent = new Intent(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
                     intent.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
-                            new ComponentName(requireContext(), MuzeiWallpaperService.class));
+                            new ComponentName(requireContext(), AlexWallpaperService.class));
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 } catch (ActivityNotFoundException e) {
