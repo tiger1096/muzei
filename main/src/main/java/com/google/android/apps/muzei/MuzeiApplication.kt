@@ -49,15 +49,15 @@ class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPrefer
         val sharedPreferences = Prefs.getSharedPreferences(this)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
-        // 当主线程启动的时候，将启动wallpaper service
-        val processName = getProcessName(this)
-        if (processName != null && !processName.contains("wallpaper")) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                this.startForegroundService(Intent(this, WallpaperService::class.java))
-            } else {
-                this.startService(Intent(this, WallpaperService::class.java))
-            }
-        }
+//        // 当主线程启动的时候，将启动wallpaper service
+//        val processName = getProcessName(this)
+//        if (processName != null && !processName.contains("wallpaper")) {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                this.startForegroundService(Intent(this, WallpaperService::class.java))
+//            } else {
+//                this.startService(Intent(this, WallpaperService::class.java))
+//            }
+//        }
     }
 
     fun getProcessName(cxt: Context): String? {
