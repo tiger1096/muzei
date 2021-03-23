@@ -141,6 +141,7 @@ dependencies {
     implementation project(':gl-wallpaper')
     implementation project(':service_wallpaper')
     implementation project(':service_polling')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

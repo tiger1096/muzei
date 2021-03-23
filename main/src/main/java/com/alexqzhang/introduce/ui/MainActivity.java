@@ -7,11 +7,15 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.WallpaperInfo;
 import android.app.WallpaperManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.alexqzhang.glorious.service.AlexWallpaperService;
+import com.google.android.apps.muzei.MainFragment;
 import com.google.android.apps.muzei.MissingResourcesDialogFragment;
 import com.google.android.apps.muzei.TutorialFragment;
 import com.google.android.apps.muzei.WelcomeFragment;
@@ -39,19 +43,19 @@ public class MainActivity extends AppCompatActivity {
         boolean seenTutorial = sp.getBoolean(TutorialFragment.PREF_SEEN_TUTORIAL, false);
 
         if (!seenTutorial) {
-            seenTutorial = !isLiveWallpaperRunning(this, getPackageName());
+            seenTutorial = isLiveWallpaperRunning(this, getPackageName());
             if (seenTutorial) {
                 sp.edit().putBoolean(TutorialFragment.PREF_SEEN_TUTORIAL, true);
             }
         }
 
-        if (seenTutorial) {
-            TutorialFragment fragment = new TutorialFragment();
+        if (!seenTutorial) {
+            WelcomeFragment fragment = new WelcomeFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
         } else {
-            WelcomeFragment fragment = new WelcomeFragment();
+            MainFragment fragment = new MainFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
