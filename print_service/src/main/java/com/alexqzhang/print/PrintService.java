@@ -22,12 +22,12 @@ public class PrintService {
             return inputBitmap;
         }
 
-        Log.e("alex", "inputBitmap = " + inputBitmap.getWidth() + ", " + inputBitmap.getHeight());
-        Log.e("alex", "screenWidth = " + pictureConfig.screenWidth + ", " + pictureConfig.screenHeight);
+//        Log.e("alex", "inputBitmap = " + inputBitmap.getWidth() + ", " + inputBitmap.getHeight());
+//        Log.e("alex", "screenWidth = " + pictureConfig.screenWidth + ", " + pictureConfig.screenHeight);
         Bitmap cropBitmap = crop(inputBitmap,
                 pictureConfig.screenWidth, pictureConfig.screenHeight);
         Bitmap outputBitmap = write(cropBitmap, pictureConfig, textConfig);
-        Log.e("alex", "PrintService print");
+//        Log.e("alex", "PrintService print");
 
         return outputBitmap;
     }

@@ -1,25 +1,17 @@
 package com.alexqzhang.introduce.ui;
 
+import android.app.WallpaperInfo;
+import android.app.WallpaperManager;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.WallpaperInfo;
-import android.app.WallpaperManager;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
-
-import com.alexqzhang.glorious.service.AlexWallpaperService;
 import com.google.android.apps.muzei.MainFragment;
-import com.google.android.apps.muzei.MissingResourcesDialogFragment;
 import com.google.android.apps.muzei.TutorialFragment;
 import com.google.android.apps.muzei.WelcomeFragment;
-import com.google.android.apps.muzei.settings.EffectsFragment;
 
 import net.nurik.roman.muzei.R;
 
@@ -32,10 +24,33 @@ import net.nurik.roman.muzei.R;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private boolean isInited = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        isInited = false;
+        initView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView(); // 用于在设置背景后返回MainActivity重新绘制
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isInited = false;
+    }
+
+    private void initView() {
+        if (isInited) {
+            return;
+        }
 
         // TODO 广告页面暂时没有
 
@@ -60,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, fragment)
                     .commit();
         }
+
+        isInited = true;
     }
 
     /**
