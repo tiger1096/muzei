@@ -5,15 +5,12 @@ import android.app.WallpaperManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.apps.muzei.TutorialFragment;
@@ -22,8 +19,6 @@ import com.google.android.apps.muzei.WelcomeFragment;
 import net.nurik.roman.muzei.R;
 
 public class IntroActivity extends AppCompatActivity {
-
-    private static boolean needShowSplash = true;
 
     private boolean isInited = false;
     private TutorialVideoView tutorialVideoView;
@@ -42,20 +37,6 @@ public class IntroActivity extends AppCompatActivity {
     protected void onResume() {
         initView(); // 用于在设置背景后返回MainActivity重新绘制
         super.onResume();
-    }
-
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        ImageView imageView = findViewById(R.id.advertise);
-        if (imageView.getVisibility() == View.VISIBLE) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    startActivity(new Intent(IntroActivity.this, MainActivity.class));
-                }
-            },1000);
-        }
     }
 
     @Override
@@ -86,6 +67,19 @@ public class IntroActivity extends AppCompatActivity {
                 tutorialVideoView.start();
             }
         });
+        tutorialVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setOnInfoListener(new MediaPlayer.OnInfoListener() {
+                    @Override
+                    public boolean onInfo(MediaPlayer mp, int what, int extra) {
+                        if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START)
+                            tutorialVideoView.setBackgroundColor(Color.TRANSPARENT);
+                        return true;
+                    }
+                });
+            }
+        });
     }
 
     private void initView() {
@@ -104,29 +98,16 @@ public class IntroActivity extends AppCompatActivity {
                 sp.edit().putBoolean(TutorialFragment.PREF_SEEN_TUTORIAL, true);
             }
         }
-        toggleViews(seenTutorial ? View.INVISIBLE : View.VISIBLE);
 
         if (!seenTutorial) {
             WelcomeFragment fragment = new WelcomeFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();
+        } else {
+            startActivity(new Intent(IntroActivity.this, MainActivity.class));
         }
         isInited = true;
-    }
-
-    public void toggleViews(int tutorialVisible) {
-        TutorialVideoView tutorialVideoView = findViewById(R.id.background);
-        tutorialVideoView.setVisibility(tutorialVisible);
-        FragmentContainerView fragmentContainerView = findViewById(R.id.container);
-        fragmentContainerView.setVisibility(tutorialVisible);
-
-        ImageView imageView = findViewById(R.id.advertise);
-        if (tutorialVisible == View.VISIBLE) {
-            imageView.setVisibility(View.INVISIBLE);
-        } else {
-            imageView.setVisibility(View.VISIBLE);
-        }
     }
 
     /**
