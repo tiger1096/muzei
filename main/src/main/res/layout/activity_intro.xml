@@ -1,0 +1,25 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <com.alexqzhang.introduce.ui.TutorialVideoView
+      android:id="@+id/background"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="invisible"
+      />
+  <ImageView
+      android:id="@+id/advertise"
+      android:src="@drawable/river"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scaleType="centerCrop"
+      android:visibility="visible">
+  </ImageView>
+  <androidx.fragment.app.FragmentContainerView
+      android:id="@+id/container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="invisible"/>
+</FrameLayout>

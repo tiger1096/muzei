@@ -64,7 +64,7 @@
         tools:targetApi="30">
 
         <activity
-            android:name="com.alexqzhang.introduce.ui.MainActivity"
+            android:name="com.alexqzhang.introduce.ui.IntroActivity"
             android:theme="@style/Theme.MuzeiActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -88,6 +88,11 @@
                 android:name="android.service.wallpaper"
                 android:resource="@xml/wallpaper"/>
         </service>
+
+        <activity
+            android:name="com.alexqzhang.introduce.ui.MainActivity"
+            android:theme="@style/Theme.MuzeiActivity">
+        </activity>
 
         <activity-alias
             android:name="com.google.android.apps.muzei.settings.SettingsActivity"

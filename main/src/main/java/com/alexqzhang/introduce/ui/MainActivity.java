@@ -1,17 +1,10 @@
 package com.alexqzhang.introduce.ui;
 
-import android.app.WallpaperInfo;
-import android.app.WallpaperManager;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.PreferenceManager;
 
 import com.google.android.apps.muzei.MainFragment;
-import com.google.android.apps.muzei.TutorialFragment;
-import com.google.android.apps.muzei.WelcomeFragment;
 
 import net.nurik.roman.muzei.R;
 
@@ -24,77 +17,13 @@ import net.nurik.roman.muzei.R;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private boolean isInited = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        isInited = false;
-        initView();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        initView(); // 用于在设置背景后返回MainActivity重新绘制
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        isInited = false;
-    }
-
-    private void initView() {
-        if (isInited) {
-            return;
-        }
-
-        // TODO 广告页面暂时没有
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean seenTutorial = sp.getBoolean(TutorialFragment.PREF_SEEN_TUTORIAL, false);
-
-        if (!seenTutorial) {
-            seenTutorial = isLiveWallpaperRunning(this, getPackageName());
-            if (seenTutorial) {
-                sp.edit().putBoolean(TutorialFragment.PREF_SEEN_TUTORIAL, true);
-            }
-        }
-
-        if (!seenTutorial) {
-            WelcomeFragment fragment = new WelcomeFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, fragment)
-                    .commit();
-        } else {
-            MainFragment fragment = new MainFragment();
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, fragment)
-                    .commit();
-        }
-
-        isInited = true;
-    }
-
-    /**
-     * 判断一个动态壁纸是否已经在运行
-     *
-     * @param context          :上下文
-     * @param tagetPackageName :要判断的动态壁纸的包名
-     * @return
-     */
-    public static boolean isLiveWallpaperRunning(Context context, String tagetPackageName) {
-        WallpaperManager wallpaperManager = WallpaperManager.getInstance(context); // 得到壁纸管理器
-        WallpaperInfo wallpaperInfo = wallpaperManager.getWallpaperInfo(); // 如果系统使用的壁纸是动态壁纸话则返回该动态壁纸的信息,否则会返回null
-        if (wallpaperInfo != null) { // 如果是动态壁纸,则得到该动态壁纸的包名,并与想知道的动态壁纸包名做比较
-            String currentLiveWallpaperPackageName = wallpaperInfo.getPackageName();
-            if (currentLiveWallpaperPackageName.equals(tagetPackageName)) {
-                return true;
-            }
-        }
-        return false;
+        MainFragment fragment = new MainFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 }
