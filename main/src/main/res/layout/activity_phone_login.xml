@@ -118,7 +118,7 @@
         android:drawablePadding="16dp"
         android:drawableRight="@drawable/ic_lock_white_24dp"
         android:fontFamily="@font/calibri"
-        android:hint="密码"
+        android:hint="验证码"
         android:inputType="textPassword"
         android:maxLines="1"
         android:textColorHint="#96ffffff"
@@ -153,7 +153,7 @@
           android:layout_marginLeft="16dp"
           android:background="@drawable/buttonshapewhitebg"
           android:fontFamily="@font/calibri"
-          android:text="注册"
+          android:text="发送验证码"
           android:textAllCaps="false"
           android:textColor="#96ffffff"
           android:textSize="16dp"
@@ -164,12 +164,12 @@
 
 
     <TextView
-        android:id="@+id/phone_validate"
+        android:id="@+id/password_validate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/calibri"
-        android:text="手机验证码登陆"
+        android:text="账号密码登陆"
         android:textAlignment="center"
         android:textColor="#96ffffff"
         android:textSize="16sp" />

@@ -99,6 +99,17 @@
             android:theme="@style/Theme.MuzeiActivity">
         </activity>
 
+
+        <activity
+            android:name="com.alexqzhang.user.ui.LoginActivity"
+            android:theme="@style/Theme.MuzeiActivity">
+        </activity>
+
+        <activity
+            android:name="com.alexqzhang.user.ui.PhoneLoginActivity"
+            android:theme="@style/Theme.MuzeiActivity">
+        </activity>
+
         <activity-alias
             android:name="com.google.android.apps.muzei.settings.SettingsActivity"
             android:label="@string/settings_title"

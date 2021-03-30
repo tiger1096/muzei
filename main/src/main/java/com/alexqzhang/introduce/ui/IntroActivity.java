@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
 import com.alexqzhang.mainpage.ui.MainActivity;
+import com.alexqzhang.user.ui.LoginActivity;
 import com.google.android.apps.muzei.TutorialFragment;
 import com.google.android.apps.muzei.WelcomeFragment;
 
@@ -106,7 +107,7 @@ public class IntroActivity extends AppCompatActivity {
                     .replace(R.id.container, fragment)
                     .commit();
         } else {
-            startActivity(new Intent(IntroActivity.this, MainActivity.class));
+            startActivity(new Intent(IntroActivity.this, LoginActivity.class));
         }
         isInited = true;
     }
