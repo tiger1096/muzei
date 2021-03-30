@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import com.alexqzhang.mainpage.ui.MainActivity;
 import com.google.android.apps.muzei.TutorialFragment;
 import com.google.android.apps.muzei.WelcomeFragment;
 
