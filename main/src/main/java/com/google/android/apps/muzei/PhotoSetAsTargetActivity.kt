@@ -22,7 +22,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
-import com.alexqzhang.introduce.ui.MainActivity
+import com.alexqzhang.mainpage.ui.MainActivity
 import com.google.android.apps.muzei.api.MuzeiContract
 import com.google.android.apps.muzei.single.BuildConfig.SINGLE_AUTHORITY
 import com.google.android.apps.muzei.single.SingleArtProvider

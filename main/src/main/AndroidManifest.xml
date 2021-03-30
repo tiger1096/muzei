@@ -95,19 +95,19 @@
         </service>
 
         <activity
-            android:name="com.alexqzhang.introduce.ui.MainActivity"
+            android:name="com.alexqzhang.mainpage.ui.MainActivity"
             android:theme="@style/Theme.MuzeiActivity">
         </activity>
 
         <activity-alias
             android:name="com.google.android.apps.muzei.settings.SettingsActivity"
             android:label="@string/settings_title"
-            android:targetActivity="com.alexqzhang.introduce.ui.MainActivity"
+            android:targetActivity="com.alexqzhang.mainpage.ui.MainActivity"
             android:exported="true"/>
 
         <activity-alias
             android:name="com.google.android.apps.muzei.settings.NotificationSettings"
-            android:targetActivity="com.alexqzhang.introduce.ui.MainActivity"
+            android:targetActivity="com.alexqzhang.mainpage.ui.MainActivity"
             android:enabled="@bool/enable_notification_settings">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -119,7 +119,7 @@
             android:name="com.google.android.apps.muzei.settings.AboutActivity"
             android:label="@string/about_title"
             android:theme="@style/Theme.Muzei.About"
-            android:parentActivityName="com.alexqzhang.introduce.ui.MainActivity"/>
+            android:parentActivityName="com.alexqzhang.mainpage.ui.MainActivity"/>
 
         <service
             android:name="com.google.android.apps.muzei.quicksettings.NextArtworkTileService"

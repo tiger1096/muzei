@@ -1,4 +1,4 @@
-package com.alexqzhang.introduce.ui;
+package com.alexqzhang.mainpage.ui;
 
 import android.os.Bundle;
 
