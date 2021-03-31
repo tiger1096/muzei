@@ -32,6 +32,9 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, PhoneLoginActivity.class));
             }
         });
+
+        // TODO 后续切换登录方式应该不需要跳转新的activity，只需要改动页面的文字即可，这样切换的时候没有闪烁
+
 //        imageView = findViewById(R.id.imageView);
 //        textView = findViewById(R.id.textView);
 

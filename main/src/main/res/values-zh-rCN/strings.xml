@@ -131,4 +131,14 @@
     <string name="about_version_template">v<xliff:g id="version_number" example="3.3.0 Beta">%1$s</xliff:g></string>
     <string name="app_author"><xliff:g id="roman_nurik">Roman Nurik</xliff:g> 与 <xliff:g id="ian_lake">Ian Lake</xliff:g></string>
     <string name="app_context_description">您主屏幕上的动态博物馆。</string>
+
+    <string name="signin">登录</string>
+    <string name="signup">注册</string>
+    <string name="send_verification_code">发送验证码</string>
+    <string name="use_password_validate">账号密码登录</string>
+    <string name="use_telephone_validate">手机验证码登录</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="telephone_hint">手机号</string>
+    <string name="password_hint">密码</string>
+    <string name="verification_code_hint">验证码</string>
 </resources>
