@@ -99,6 +99,11 @@
             android:theme="@style/Theme.MuzeiActivity">
         </activity>
 
+        <activity
+            android:name="com.alexqzhang.mainpage.ui.MainPageActivity"
+            android:theme="@style/Theme.Muzei">
+        </activity>
+
 
         <activity
             android:name="com.alexqzhang.user.ui.LoginActivity"

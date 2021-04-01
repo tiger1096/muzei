@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alexqzhang.mainpage.ui.MainPageActivity;
+
 import net.nurik.roman.muzei.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -30,6 +32,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, PhoneLoginActivity.class));
+            }
+        });
+
+        Button login = findViewById(R.id.login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, MainPageActivity.class));
             }
         });
 
