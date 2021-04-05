@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="微信"/>
+            android:text="@string/section_history"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/id_tab_frd"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="朋友"/>
+            android:text="@string/section_discover"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/id_tab_address"
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="通讯录"/>
+            android:text="@string/section_choose"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/id_tab_setting"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="设置"/>
+            android:text="@string/section_me"/>
     </LinearLayout>
 
 </LinearLayout>

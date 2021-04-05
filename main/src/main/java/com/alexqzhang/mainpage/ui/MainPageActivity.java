@@ -7,6 +7,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.alexqzhang.history.ui.HistoryFragment;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -102,7 +104,7 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
                 mWeixinImg.setImageResource(R.mipmap.tab_weixin_pressed);
                 //如果微信对应的Fragment没有实例化，则进行实例化，并显示出来
                 if (mFragWeinxin == null) {
-                    mFragWeinxin = new WeixinFragment();
+                    mFragWeinxin = new HistoryFragment();
                     transaction.add(R.id.id_content, mFragWeinxin);
                 } else {
                     //如果微信对应的Fragment已经实例化，则直接显示出来

@@ -4,5 +4,13 @@
     android:layout_height="match_parent"
     tools:context="com.alexqzhang.history.ui.HistoryFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/histories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 
 </FrameLayout>
