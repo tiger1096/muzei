@@ -57,6 +57,7 @@
     <string name="section_choose_source">Sources</string>
     <string name="section_effects">Effects</string>
 
+    <string name="title">SweetSummer</string>
     <string name="section_history">History</string>
     <string name="section_discover">Discover</string>
     <string name="section_setting">Setting</string>
@@ -165,4 +166,7 @@
     <string name="telephone_hint">Telephone Num</string>
     <string name="password_hint">Password</string>
     <string name="verification_code_hint">Verification code</string>
+
+    <string name="fetch_history">loading......</string>
+
 </resources>
