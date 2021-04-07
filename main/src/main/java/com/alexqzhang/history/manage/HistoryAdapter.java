@@ -26,6 +26,10 @@ public class HistoryAdapter extends RecyclerView.Adapter {
         this.histories = histories;
     }
 
+    public void appendHistories(List<History> oldHistories) {
+        this.histories.addAll(oldHistories);
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

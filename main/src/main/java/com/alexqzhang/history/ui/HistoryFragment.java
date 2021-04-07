@@ -56,6 +56,8 @@ public class HistoryFragment extends Fragment {
 
                 if (lastVisibleHistoryItem == historyAdapter.getItemCount() - 1) {
                     Toast.makeText(getContext(), "开始加载！", Toast.LENGTH_LONG).show();
+
+                    fetchHistories();
                 }
             }
 
@@ -68,5 +70,16 @@ public class HistoryFragment extends Fragment {
         });
 
         return fragmentView;
+    }
+
+    private void fetchHistories() {
+        LinkedList<History> newHistories = new LinkedList<>();
+        newHistories.add(new History(0, "test4", R.drawable.preview, new Timestamp((new Date()).getTime())));
+        newHistories.add(new History(0, "test5", R.drawable.preview, new Timestamp((new Date()).getTime())));
+        newHistories.add(new History(0, "test6", R.drawable.preview, new Timestamp((new Date()).getTime())));
+        newHistories.add(new History(0, "test7", R.drawable.preview, new Timestamp((new Date()).getTime())));
+        newHistories.add(new History(0, "test8", R.drawable.preview, new Timestamp((new Date()).getTime())));
+        historyAdapter.appendHistories(newHistories);
+        historyAdapter.notifyDataSetChanged();
     }
 }
