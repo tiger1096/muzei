@@ -82,4 +82,9 @@ public class HistoryFragment extends Fragment {
         historyAdapter.appendHistories(newHistories);
         historyAdapter.notifyDataSetChanged();
     }
+
+    private void fetchNothing() {
+        historyAdapter.appendEndToHistories();
+        historyAdapter.notifyDataSetChanged();
+    }
 }

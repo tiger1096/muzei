@@ -168,5 +168,6 @@
     <string name="verification_code_hint">Verification code</string>
 
     <string name="fetch_history">loading......</string>
+    <string name="fetch_history_end">-- End --</string>
 
 </resources>

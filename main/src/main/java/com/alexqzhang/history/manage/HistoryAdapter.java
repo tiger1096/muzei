@@ -3,6 +3,7 @@ package com.alexqzhang.history.manage;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.alexqzhang.history.ui.HistoryBottomHolder;
 import com.alexqzhang.history.ui.HistoryViewHolder;
@@ -21,6 +22,7 @@ public class HistoryAdapter extends RecyclerView.Adapter {
     private final static int FETCH_LOADING_ITEM_TYPE = 1;
 
     private List<History> histories = new LinkedList<>();
+    private boolean isEnded = false;
 
     public HistoryAdapter(List<History> histories) {
         this.histories = histories;
@@ -28,6 +30,10 @@ public class HistoryAdapter extends RecyclerView.Adapter {
 
     public void appendHistories(List<History> oldHistories) {
         this.histories.addAll(oldHistories);
+    }
+
+    public void appendEndToHistories() {
+        isEnded = true;
     }
 
     @NonNull
@@ -51,7 +57,11 @@ public class HistoryAdapter extends RecyclerView.Adapter {
             ((HistoryViewHolder) holder).textView.setText(history.getName());
             ((HistoryViewHolder) holder).imageView.setImageResource(history.getResId());
         } else {
-
+            if (isEnded) {
+                ((HistoryBottomHolder) holder).textView.setText(R.string.fetch_history_end);
+            } else {
+                ((HistoryBottomHolder) holder).textView.setText(R.string.fetch_history);
+            }
         }
     }
 
