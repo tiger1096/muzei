@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +23,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.LinkedList;
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private static LinkedList<History> histories = new LinkedList<>();
 
@@ -32,6 +34,7 @@ public class HistoryFragment extends Fragment {
         histories.add(new History(0, "test4", R.drawable.preview, new Timestamp((new Date()).getTime())));
     }
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private HistoryAdapter historyAdapter;
     private LinearLayoutManager linearLayoutManager;
@@ -41,6 +44,9 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_history, container, false);
+
+        swipeRefreshLayout = fragmentView.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         linearLayoutManager = new LinearLayoutManager(getContext());
         historyAdapter = new HistoryAdapter(histories);
@@ -86,5 +92,15 @@ public class HistoryFragment extends Fragment {
     private void fetchNothing() {
         historyAdapter.appendEndToHistories();
         historyAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onRefresh() {
+        (new Handler()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
     }
 }
