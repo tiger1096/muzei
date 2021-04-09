@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.multidex.MultiDexApplication
 import com.alexqzhang.service.WallpaperService
+import com.alexqzhang.util.ScreenUtils
 import com.google.android.apps.muzei.settings.Prefs
 
 class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -58,6 +59,8 @@ class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPrefer
 //                this.startService(Intent(this, WallpaperService::class.java))
 //            }
 //        }
+
+        ScreenUtils.context = applicationContext;
     }
 
     fun getProcessName(cxt: Context): String? {

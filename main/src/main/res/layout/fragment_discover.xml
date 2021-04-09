@@ -3,6 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.alexqzhang.discover.ui.DiscoverFragment">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh_discover"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/discover_pics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>

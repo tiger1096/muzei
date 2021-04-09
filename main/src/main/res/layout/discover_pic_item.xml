@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/picture_drawer"
+    android:layout_width="310px"
+    android:layout_height="310px">
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_margin="5px"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/good_morning_img" />
+</LinearLayout>

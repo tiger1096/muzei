@@ -7,6 +7,7 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.alexqzhang.discover.ui.DiscoverFragment;
 import com.alexqzhang.history.ui.HistoryFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,9 +31,9 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
     private ImageButton mSettingImg;
 
     //声明四个Tab分别对应的Fragment
-    private Fragment mFragWeinxin;
-    private Fragment mFragFrd;
-    private Fragment mFragAddress;
+    private Fragment mFragHistory;
+    private Fragment mFragDiscover;
+    private Fragment mFragCommunity;
     private Fragment mFragSetting;
 
     @Override
@@ -103,30 +104,30 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
                 //设置微信的ImageButton为绿色
                 mWeixinImg.setImageResource(R.mipmap.tab_weixin_pressed);
                 //如果微信对应的Fragment没有实例化，则进行实例化，并显示出来
-                if (mFragWeinxin == null) {
-                    mFragWeinxin = new HistoryFragment();
-                    transaction.add(R.id.id_content, mFragWeinxin);
+                if (mFragHistory == null) {
+                    mFragHistory = new HistoryFragment();
+                    transaction.add(R.id.id_content, mFragHistory);
                 } else {
                     //如果微信对应的Fragment已经实例化，则直接显示出来
-                    transaction.show(mFragWeinxin);
+                    transaction.show(mFragHistory);
                 }
                 break;
             case 1:
                 mFrdImg.setImageResource(R.mipmap.tab_find_frd_pressed);
-                if (mFragFrd == null) {
-                    mFragFrd = new FrdFragment();
-                    transaction.add(R.id.id_content, mFragFrd);
+                if (mFragDiscover == null) {
+                    mFragDiscover = new DiscoverFragment();
+                    transaction.add(R.id.id_content, mFragDiscover);
                 } else {
-                    transaction.show(mFragFrd);
+                    transaction.show(mFragDiscover);
                 }
                 break;
             case 2:
                 mAddressImg.setImageResource(R.mipmap.tab_address_pressed);
-                if (mFragAddress == null) {
-                    mFragAddress = new AddressFragment();
-                    transaction.add(R.id.id_content, mFragAddress);
+                if (mFragCommunity == null) {
+                    mFragCommunity = new AddressFragment();
+                    transaction.add(R.id.id_content, mFragCommunity);
                 } else {
-                    transaction.show(mFragAddress);
+                    transaction.show(mFragCommunity);
                 }
                 break;
             case 3:
@@ -145,14 +146,14 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
 
     //将四个的Fragment隐藏
     private void hideFragments(FragmentTransaction transaction) {
-        if (mFragWeinxin != null) {
-            transaction.hide(mFragWeinxin);
+        if (mFragHistory != null) {
+            transaction.hide(mFragHistory);
         }
-        if (mFragFrd != null) {
-            transaction.hide(mFragFrd);
+        if (mFragDiscover != null) {
+            transaction.hide(mFragDiscover);
         }
-        if (mFragAddress != null) {
-            transaction.hide(mFragAddress);
+        if (mFragCommunity != null) {
+            transaction.hide(mFragCommunity);
         }
         if (mFragSetting != null) {
             transaction.hide(mFragSetting);
