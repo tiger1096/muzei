@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.alexqzhang.discover.ui.DiscoverFragment;
 import com.alexqzhang.history.ui.HistoryFragment;
+import com.alexqzhang.me.ui.SettingFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;

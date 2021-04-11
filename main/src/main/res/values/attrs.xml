@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- RowSettingText -->
+    <declare-styleable name="RowSettingText">
+        <attr name="rst_leftImage" format="reference|integer" />
+        <attr name="rst_rightImage" format="reference|integer" />
+        <attr name="rst_title" format="string" />
+        <attr name="rst_summary" format="string" />
+        <attr name="rst_status" format="string" />
+        <attr name="rst_bottomLineShow" format="reference|boolean" />
+    </declare-styleable>
+
+</resources>
