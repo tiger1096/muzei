@@ -1,10 +1,13 @@
 package com.alexqzhang.glorious.service;
 
+import android.app.WallpaperManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.os.Handler;
 import android.service.wallpaper.WallpaperService;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 
@@ -149,12 +152,21 @@ public class AlexWallpaperService extends WallpaperService {
         }
 
         @Override
-        public void onTouchEvent(MotionEvent event) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    seed = Math.abs((new Random()).nextInt()) % (poems.size());
-                    break;
+        public Bundle onCommand(String action, int x, int y, int z, Bundle extras,
+                                boolean resultRequested) {
+            if (action.equals(WallpaperManager.COMMAND_TAP)) {
+                seed = Math.abs((new Random()).nextInt()) % (poems.size());
             }
+            return super.onCommand(action, x, y, z, extras, resultRequested);
+        }
+
+        @Override
+        public void onTouchEvent(MotionEvent event) {
+//            switch (event.getAction()) {
+//                case MotionEvent.ACTION_DOWN:
+//                    seed = Math.abs((new Random()).nextInt()) % (poems.size());
+//                    break;
+//            }
         }
 
         @Override
