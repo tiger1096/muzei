@@ -91,6 +91,13 @@ public class AlexWallpaperService extends WallpaperService {
             canvas.restore();
             holder.unlockCanvasAndPost(canvas);
 
+            try {
+                WallpaperManager wallpaperManager = WallpaperManager.getInstance(getApplicationContext());
+                int ret = wallpaperManager.setBitmap(outputBitmap, null, true, WallpaperManager.FLAG_LOCK);
+            } catch (Exception e) {
+
+            }
+
             handler.removeCallbacks(runnable);
             if (visible) {
                 handler.postDelayed(runnable, 10);

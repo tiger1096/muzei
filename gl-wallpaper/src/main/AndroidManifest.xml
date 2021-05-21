@@ -14,6 +14,8 @@
   limitations under the License.
   -->
 
-<manifest
-    package="com.google.android.apps.muzei.glwallpaper">
+<manifest package="com.google.android.apps.muzei.glwallpaper"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 </manifest>
