@@ -34,8 +34,8 @@ import com.google.android.apps.muzei.render.ImageLoader
 import com.google.android.apps.muzei.room.Artwork
 import com.google.android.apps.muzei.room.MuzeiDatabase
 import kotlinx.coroutines.runBlocking
-import net.nurik.roman.muzei.androidclientcommon.BuildConfig
-import net.nurik.roman.muzei.androidclientcommon.R
+import com.nice.seeyou.androidclientcommon.BuildConfig
+import com.nice.seeyou.androidclientcommon.R
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream

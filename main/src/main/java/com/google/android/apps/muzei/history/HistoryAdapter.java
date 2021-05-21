@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 import java.util.List;
 

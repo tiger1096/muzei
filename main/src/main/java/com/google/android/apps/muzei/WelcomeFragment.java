@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import net.nurik.roman.muzei.R;
-import net.nurik.roman.muzei.databinding.IntroFragmentBinding;
+import com.nice.seeyou.R;
+import com.nice.seeyou.databinding.IntroFragmentBinding;
 
 public class WelcomeFragment extends Fragment {
 

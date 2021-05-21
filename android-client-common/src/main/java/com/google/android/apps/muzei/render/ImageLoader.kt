@@ -27,7 +27,7 @@ import android.util.Log
 import androidx.exifinterface.media.ExifInterface
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import net.nurik.roman.muzei.androidclientcommon.BuildConfig
+import com.nice.seeyou.androidclientcommon.BuildConfig
 import java.io.FileNotFoundException
 import java.io.IOException
 import java.io.InputStream

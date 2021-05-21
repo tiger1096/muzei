@@ -30,9 +30,9 @@ import androidx.core.text.HtmlCompat
 import androidx.fragment.app.commit
 import com.google.android.apps.muzei.render.MuzeiRendererFragment
 import com.google.android.apps.muzei.util.AnimatedMuzeiLogoFragment
-import net.nurik.roman.muzei.BuildConfig
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.AboutActivityBinding
+import com.nice.seeyou.BuildConfig
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.AboutActivityBinding
 
 class AboutActivity : AppCompatActivity() {
 

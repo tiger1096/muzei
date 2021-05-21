@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 
 import com.alexqzhang.util.ScreenUtils;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

@@ -25,7 +25,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import net.nurik.roman.muzei.BuildConfig
+import com.nice.seeyou.BuildConfig
 
 @OptIn(ExperimentalCoroutinesApi::class)
 private val mutableWallpaperActiveState = MutableStateFlow(false)

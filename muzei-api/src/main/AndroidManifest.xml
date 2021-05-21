@@ -19,7 +19,7 @@
 
     <queries>
         <!-- Used to query the Muzei ContentProvider -->
-        <package android:name="net.nurik.roman.muzei" />
+        <package android:name="com.nice.seeyou" />
     </queries>
 
     <application>

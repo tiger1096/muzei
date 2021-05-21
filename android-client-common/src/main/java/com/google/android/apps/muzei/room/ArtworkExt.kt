@@ -43,7 +43,7 @@ import com.google.android.apps.muzei.legacy.BuildConfig.LEGACY_AUTHORITY
 import com.google.android.apps.muzei.legacy.LegacySourceServiceProtocol.LEGACY_COMMAND_ID_NEXT_ARTWORK
 import com.google.android.apps.muzei.util.ContentProviderClientCompat
 import com.google.android.apps.muzei.util.toastFromBackground
-import net.nurik.roman.muzei.androidclientcommon.R
+import com.nice.seeyou.androidclientcommon.R
 import org.json.JSONArray
 import org.json.JSONException
 import java.util.ArrayList

@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:543408482564:android:b94fc70ed09b1238",
         "android_client_info": {
-          "package_name": "net.nurik.roman.muzei"
+          "package_name": "com.nice.seeyou"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "543408482564-t831s05qt0nffpp5k3l043dukif9l4tg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "net.nurik.roman.muzei",
+            "package_name": "com.nice.seeyou",
             "certificate_hash": "FF265DBDE0B46E5A8853D88791ED546595F0DEAB"
           }
         },

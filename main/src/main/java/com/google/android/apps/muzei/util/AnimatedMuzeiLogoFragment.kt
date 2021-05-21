@@ -23,8 +23,8 @@ import android.util.TypedValue
 import android.view.View
 import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.AnimatedLogoFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.AnimatedLogoFragmentBinding
 
 class AnimatedMuzeiLogoFragment : Fragment(R.layout.animated_logo_fragment) {
     private lateinit var binding: AnimatedLogoFragmentBinding

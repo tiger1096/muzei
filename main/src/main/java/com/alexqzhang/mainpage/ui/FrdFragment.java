@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 /**
  * Created by caobotao on 16/1/4.

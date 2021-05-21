@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.apps.muzei.MainFragment;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 /**
  * MainActivity作用：

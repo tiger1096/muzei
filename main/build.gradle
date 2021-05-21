@@ -35,7 +35,7 @@ android {
     dexOptions.preDexLibraries true
 
     defaultConfig {
-        applicationId "net.nurik.roman.muzei"
+        applicationId "com.nice.seeyou"
         minSdkVersion 19
         targetSdkVersion rootProject.ext.targetSdkVersion
 

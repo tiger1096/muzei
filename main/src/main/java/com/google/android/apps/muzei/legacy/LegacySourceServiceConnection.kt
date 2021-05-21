@@ -33,7 +33,7 @@ import com.google.android.apps.muzei.room.Provider
 import com.google.android.apps.muzei.sync.ProviderManager
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.BuildConfig
+import com.nice.seeyou.BuildConfig
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 

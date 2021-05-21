@@ -46,7 +46,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 /**
  * Quick Settings Tile which allows users quick access to the 'Next Artwork' command, if supported.

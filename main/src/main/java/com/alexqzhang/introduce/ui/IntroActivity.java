@@ -18,7 +18,7 @@ import com.alexqzhang.user.ui.LoginActivity;
 import com.google.android.apps.muzei.TutorialFragment;
 import com.google.android.apps.muzei.WelcomeFragment;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 public class IntroActivity extends AppCompatActivity {
 

@@ -23,7 +23,7 @@ import androidx.lifecycle.AndroidViewModel
 import com.google.android.apps.muzei.legacy.BuildConfig.LEGACY_AUTHORITY
 import com.google.android.apps.muzei.room.getInstalledProviders
 import kotlinx.coroutines.flow.map
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 internal data class Action(
         val icon: Drawable,

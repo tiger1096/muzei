@@ -29,7 +29,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
 import com.google.android.apps.muzei.util.toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 class NotificationSettingsDialogFragment : DialogFragment() {
 

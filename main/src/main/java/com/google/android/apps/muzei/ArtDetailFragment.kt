@@ -79,8 +79,8 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.ArtDetailFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.ArtDetailFragmentBinding
 
 @OptIn(ExperimentalCoroutinesApi::class)
 val ArtDetailOpen = MutableStateFlow(false)

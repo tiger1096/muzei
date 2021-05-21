@@ -15,7 +15,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.preference.PreferenceManager
 import androidx.work.Configuration
 import androidx.work.WorkManager
-import net.nurik.roman.muzei.androidclientcommon.BuildConfig
+import com.nice.seeyou.androidclientcommon.BuildConfig
 
 class WorkManagerInitializer : ContentProvider() {
 

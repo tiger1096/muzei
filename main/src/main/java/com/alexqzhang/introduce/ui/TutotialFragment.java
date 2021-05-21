@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -28,8 +28,8 @@ import com.google.android.apps.muzei.render.MuzeiBlurRenderer
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.EffectsScreenFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.EffectsScreenFragmentBinding
 
 /**
  * Fragment for allowing the user to configure advanced settings.

@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.alexqzhang.mainpage.ui.MainPageActivity;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 public class LoginActivity extends AppCompatActivity {
     ImageView imageView;

@@ -31,8 +31,8 @@ import com.google.android.apps.muzei.util.toast
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.EffectsFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.EffectsFragmentBinding
 
 @OptIn(ExperimentalCoroutinesApi::class)
 val EffectsLockScreenOpen = MutableStateFlow(false)

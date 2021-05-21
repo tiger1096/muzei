@@ -34,7 +34,7 @@ import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 class PhotoSetAsTargetActivity : ComponentActivity() {
 

@@ -41,9 +41,9 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.shareIn
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.LegacySourceInfoFragmentBinding
-import net.nurik.roman.muzei.databinding.LegacySourceInfoItemBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.LegacySourceInfoFragmentBinding
+import com.nice.seeyou.databinding.LegacySourceInfoItemBinding
 
 class LegacySourceInfoViewModel(application: Application) : AndroidViewModel(application) {
     val unsupportedSources = LegacySourceManager.getInstance(application).unsupportedSources

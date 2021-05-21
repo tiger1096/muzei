@@ -43,7 +43,7 @@ import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.map
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class LegacySourcePackageListener(

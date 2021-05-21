@@ -29,7 +29,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.google.android.apps.muzei.util.toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 class MissingResourcesDialogFragment : DialogFragment() {
     companion object {

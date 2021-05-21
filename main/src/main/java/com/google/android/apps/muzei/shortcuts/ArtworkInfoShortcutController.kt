@@ -29,7 +29,7 @@ import com.google.android.apps.muzei.room.Artwork
 import com.google.android.apps.muzei.room.MuzeiDatabase
 import com.google.android.apps.muzei.util.launchWhenStartedIn
 import kotlinx.coroutines.flow.onEach
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 /**
  * Controller responsible for updating the Artwork Info Shortcut whenever the current artwork changes

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import com.alexqzhang.discover.ui.DiscoverPicHolder;
 import com.alexqzhang.history.ui.HistoryBottomHolder;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 import java.util.LinkedList;
 import java.util.List;

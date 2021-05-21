@@ -35,8 +35,8 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.AutoAdvanceFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.AutoAdvanceFragmentBinding
 
 class AutoAdvanceFragment : Fragment(R.layout.auto_advance_fragment) {
     companion object {

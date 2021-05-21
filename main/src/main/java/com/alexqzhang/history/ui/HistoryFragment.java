@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.alexqzhang.history.manage.History;
 import com.alexqzhang.history.manage.HistoryAdapter;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 import java.sql.Timestamp;
 import java.util.Date;

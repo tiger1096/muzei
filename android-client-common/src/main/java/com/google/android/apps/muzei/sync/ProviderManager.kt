@@ -45,7 +45,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.androidclientcommon.BuildConfig
+import com.nice.seeyou.androidclientcommon.BuildConfig
 import java.util.concurrent.Executors
 
 /**

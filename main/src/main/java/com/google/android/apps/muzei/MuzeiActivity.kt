@@ -52,9 +52,9 @@ import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.onEach
-import net.nurik.roman.muzei.BuildConfig
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.MuzeiActivityBinding
+import com.nice.seeyou.BuildConfig
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.MuzeiActivityBinding
 import kotlin.concurrent.thread
 
 private const val PREVIEW_MODE = "android.service.wallpaper.PREVIEW_MODE"

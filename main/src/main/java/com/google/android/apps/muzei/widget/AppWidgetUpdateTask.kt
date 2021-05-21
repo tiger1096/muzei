@@ -39,7 +39,7 @@ import com.google.android.apps.muzei.wallpaper.WallpaperActiveState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 import kotlin.math.max
 import kotlin.math.min
 

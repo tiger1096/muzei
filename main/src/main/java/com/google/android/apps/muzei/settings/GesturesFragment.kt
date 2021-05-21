@@ -22,8 +22,8 @@ import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.GesturesFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.GesturesFragmentBinding
 
 class GesturesFragment: Fragment(R.layout.gestures_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

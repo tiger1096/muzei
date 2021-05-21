@@ -65,9 +65,9 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.ChooseProviderFragmentBinding
-import net.nurik.roman.muzei.databinding.ChooseProviderItemBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.ChooseProviderFragmentBinding
+import com.nice.seeyou.databinding.ChooseProviderItemBinding
 
 private class StartActivityFromSettings : ActivityResultContract<ComponentName, Boolean>() {
     override fun createIntent(context: Context, input: ComponentName): Intent =

@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.alexqzhang.discover.manage.DiscoverPic;
 import com.alexqzhang.discover.manage.DiscoverPicAdapter;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 import java.util.LinkedList;
 

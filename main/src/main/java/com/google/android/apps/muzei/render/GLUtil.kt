@@ -21,7 +21,7 @@ import android.opengl.GLES20
 import android.opengl.GLUtils
 import android.util.Log
 
-import net.nurik.roman.muzei.BuildConfig
+import com.nice.seeyou.BuildConfig
 
 import java.nio.ByteBuffer
 import java.nio.ByteOrder

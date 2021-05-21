@@ -45,7 +45,7 @@ import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class NewWallpaperNotificationReceiver : BroadcastReceiver() {

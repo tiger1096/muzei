@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.alexqzhang.history.ui.HistoryBottomHolder;
 import com.alexqzhang.history.ui.HistoryViewHolder;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 import java.util.LinkedList;
 import java.util.List;

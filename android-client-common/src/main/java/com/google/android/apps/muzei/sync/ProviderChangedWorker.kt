@@ -45,7 +45,7 @@ import com.google.android.apps.muzei.room.Provider
 import com.google.android.apps.muzei.util.ContentProviderClientCompat
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withContext
-import net.nurik.roman.muzei.androidclientcommon.BuildConfig
+import com.nice.seeyou.androidclientcommon.BuildConfig
 import java.io.IOException
 import java.util.HashSet
 import java.util.concurrent.TimeUnit

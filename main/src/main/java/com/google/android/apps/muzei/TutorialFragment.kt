@@ -32,8 +32,8 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.TutorialFragmentBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.TutorialFragmentBinding
 
 class TutorialFragment : Fragment(R.layout.tutorial_fragment) {
 

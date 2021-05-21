@@ -36,7 +36,7 @@ import com.google.android.apps.muzei.api.MuzeiContract
 import com.google.android.apps.muzei.room.MuzeiDatabase
 import com.google.android.apps.muzei.sync.ProviderManager
 import kotlinx.coroutines.runBlocking
-import net.nurik.roman.muzei.androidclientcommon.BuildConfig
+import com.nice.seeyou.androidclientcommon.BuildConfig
 import java.io.FileNotFoundException
 
 /**

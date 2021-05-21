@@ -48,9 +48,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import net.nurik.roman.muzei.R
-import net.nurik.roman.muzei.databinding.BrowseProviderFragmentBinding
-import net.nurik.roman.muzei.databinding.BrowseProviderItemBinding
+import com.nice.seeyou.R
+import com.nice.seeyou.databinding.BrowseProviderFragmentBinding
+import com.nice.seeyou.databinding.BrowseProviderItemBinding
 
 class BrowseProviderFragment: Fragment(R.layout.browse_provider_fragment) {
 

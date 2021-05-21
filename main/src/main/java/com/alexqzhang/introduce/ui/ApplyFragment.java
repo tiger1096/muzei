@@ -12,9 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import net.nurik.roman.muzei.R;
-import net.nurik.roman.muzei.databinding.FragmentApplyBinding;
-import net.nurik.roman.muzei.databinding.IntroFragmentBinding;
+import com.nice.seeyou.R;
+import com.nice.seeyou.databinding.FragmentApplyBinding;
+import com.nice.seeyou.databinding.IntroFragmentBinding;
 
 public class ApplyFragment extends Fragment {
 

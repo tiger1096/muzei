@@ -17,7 +17,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="net.nurik.roman.muzei">
+    package="com.nice.seeyou">
 
     <uses-feature
         android:name="android.software.live_wallpaper"

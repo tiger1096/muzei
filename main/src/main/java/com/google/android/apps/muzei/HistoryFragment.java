@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alexqzhang.service.WallpaperService;
 import com.google.android.apps.muzei.history.HistoryAdapter;
 
-import net.nurik.roman.muzei.R;
-import net.nurik.roman.muzei.databinding.HistoryFragmentBinding;
+import com.nice.seeyou.R;
+import com.nice.seeyou.databinding.HistoryFragmentBinding;
 
 public class HistoryFragment extends Fragment {
     private static final String TAG = "HistoryFragment";

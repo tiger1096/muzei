@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 public class SplashActivity extends AppCompatActivity {
 

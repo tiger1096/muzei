@@ -3,7 +3,7 @@ package com.alexqzhang.user.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import net.nurik.roman.muzei.R;
+import com.nice.seeyou.R;
 
 public class PhoneLoginActivity extends AppCompatActivity {
 

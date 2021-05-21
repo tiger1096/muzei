@@ -32,7 +32,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.twofortyfouram.locale.api.Intent.EXTRA_BUNDLE
 import com.twofortyfouram.locale.api.Intent.EXTRA_STRING_BLURB
 import kotlinx.coroutines.flow.onEach
-import net.nurik.roman.muzei.R
+import com.nice.seeyou.R
 
 /**
  * The EDIT_SETTINGS activity for a Tasker Plugin allowing users to select whether they
