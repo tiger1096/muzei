@@ -20,8 +20,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'com.mob.sdk'
 
 project.archivesBaseName = "muzei"
+
+MobSDK {
+    appKey "333563dcaffc0"
+    appSecret "26a74b4c79527cb9487a5034575064eb"
+    SMSSDK {}
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -49,17 +56,41 @@ android {
     }
 
     signingConfigs {
-        release {
-            Properties localProps = new Properties()
-            localProps.load(new FileInputStream(file('../local.properties')))
+        debug {
             Properties keyProps = new Properties()
-            if (localProps['keystore.props.file'] != null) {
-                keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
-            }
+            keyProps.load(new FileInputStream(file('../keystore.properties.example')))
             storeFile keyProps["store"] != null ? file(keyProps["store"]) : null
             keyAlias keyProps["alias"] ?: ""
             storePassword keyProps["storePass"] ?: ""
             keyPassword keyProps["pass"] ?: ""
+//            Properties localProps = new Properties()
+//            localProps.load(new FileInputStream(file('../local.properties')))
+//            Properties keyProps = new Properties()
+//            if (localProps['keystore.props.file'] != null) {
+//                keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
+//            }
+//            storeFile keyProps["store"] != null ? file(keyProps["store"]) : null
+//            keyAlias keyProps["alias"] ?: ""
+//            storePassword keyProps["storePass"] ?: ""
+//            keyPassword keyProps["pass"] ?: ""
+        }
+        release {
+            Properties keyProps = new Properties()
+            keyProps.load(new FileInputStream(file('../keystore.properties.example')))
+            storeFile keyProps["store"] != null ? file(keyProps["store"]) : null
+            keyAlias keyProps["alias"] ?: ""
+            storePassword keyProps["storePass"] ?: ""
+            keyPassword keyProps["pass"] ?: ""
+//            Properties localProps = new Properties()
+//            localProps.load(new FileInputStream(file('../local.properties')))
+//            Properties keyProps = new Properties()
+//            if (localProps['keystore.props.file'] != null) {
+//                keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
+//            }
+//            storeFile keyProps["store"] != null ? file(keyProps["store"]) : null
+//            keyAlias keyProps["alias"] ?: ""
+//            storePassword keyProps["storePass"] ?: ""
+//            keyPassword keyProps["pass"] ?: ""
         }
     }
 
@@ -69,6 +100,7 @@ android {
             FirebasePerformance {
                 instrumentationEnabled false
             }
+            signingConfig signingConfigs.debug
         }
 
         release {

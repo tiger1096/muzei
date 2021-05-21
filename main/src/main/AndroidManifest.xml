@@ -112,7 +112,7 @@
 
         <activity
             android:name="com.alexqzhang.user.ui.PhoneLoginActivity"
-            android:theme="@style/Theme.MuzeiActivity">
+            android:theme="@style/FullScreenTheme">
         </activity>
 
         <activity-alias

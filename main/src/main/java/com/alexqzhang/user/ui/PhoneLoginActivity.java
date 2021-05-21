@@ -1,11 +1,11 @@
 package com.alexqzhang.user.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.nice.seeyou.R;
 
-public class PhoneLoginActivity extends AppCompatActivity {
+public class PhoneLoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
