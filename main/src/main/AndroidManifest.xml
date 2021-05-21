@@ -65,7 +65,7 @@
 
         <activity
             android:name="com.alexqzhang.introduce.ui.SplashActivity"
-            android:theme="@style/Theme.MuzeiActivity">
+            android:theme="@style/FullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -78,7 +78,7 @@
 
         <activity
             android:name="com.alexqzhang.introduce.ui.IntroActivity"
-            android:theme="@style/Theme.MuzeiActivity">
+            android:theme="@style/FullScreenCompatTheme">
         </activity>
 
         <service

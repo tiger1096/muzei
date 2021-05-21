@@ -16,6 +16,17 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="FullScreenTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="FullScreenCompatTheme" parent="Theme.AppCompat">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
     <!-- Muzei activity -->
 
     <style name="Theme.MuzeiActivity" parent="Theme.Muzei.Wallpaper">
