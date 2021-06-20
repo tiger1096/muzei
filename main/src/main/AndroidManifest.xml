@@ -61,6 +61,7 @@
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         tools:ignore="GoogleAppIndexingWarning"
+        android:usesCleartextTraffic="true"
         tools:targetApi="30">
 
         <activity

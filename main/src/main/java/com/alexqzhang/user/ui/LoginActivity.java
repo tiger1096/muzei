@@ -19,10 +19,21 @@ import com.alexqzhang.mainpage.ui.MainPageActivity;
 import com.mob.MobSDK;
 import com.nice.seeyou.R;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = LoginActivity.class.getSimpleName();
 
     private boolean isUsePassword = false;
 
@@ -30,6 +41,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     ImageView imageView;
     TextView textView;
     int count = 0;
+
+    private List<String> loginCookies = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +59,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        Button register = findViewById(R.id.register);
+        register.setOnClickListener(this);
+        TextView forgetPassword = findViewById(R.id.forget_password);
+        forgetPassword.setOnClickListener(this);
+
         Button login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MobSDK.submitPolicyGrantResult(true, null);
 
-                EventHandler eh=new EventHandler(){
+                EventHandler eh = new EventHandler(){
 
                     @Override
                     public void afterEvent(int event, int result, Object data) {
@@ -90,10 +108,98 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.register:
+                register();
+                break;
+            case R.id.forget_password:
+                forgetPassword();
+                break;
             case R.id.login:
                 break;
             default:
                 break;
         }
+    }
+
+    private void register() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://192.168.0.29:8080/march-server/LoginServlet");
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setConnectTimeout(8000);
+                    connection.setReadTimeout(5000);
+
+                    connection.setRequestProperty("telephone", "13022116320");
+                    connection.setRequestProperty("captcha", "966996");
+                    connection.setRequestMethod("POST");
+
+                    OutputStream os = connection.getOutputStream();
+
+                    int code = connection.getResponseCode();
+                    if (code != HttpURLConnection.HTTP_OK) {
+                        Log.e(TAG, "getResponseCode = " + code);
+                    }
+
+                    Map<String, List<String>> headers = connection.getHeaderFields();
+                    if (headers != null && headers.containsKey("Set-Cookie")) {
+                        List<String> cookies = headers.get("Set-Cookie");
+                        for (String value : cookies) {
+                            loginCookies.add(value);
+                            Log.e(TAG, "value = " + value);
+                        }
+                    } else {
+                        Log.e(TAG, "no Set-Cookie");
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "[register] " + e.getMessage());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "[register] " + e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    private void forgetPassword() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://192.168.0.29:8080/march-server/UpdateUser");
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setConnectTimeout(8000);
+                    connection.setReadTimeout(5000);
+                    for (String value : loginCookies) {
+                        connection.addRequestProperty("Cookie", value);
+                    }
+                    connection.setRequestMethod("POST");
+
+                    int code = connection.getResponseCode();
+                    if (code != HttpURLConnection.HTTP_OK) {
+                        Log.e(TAG, "getResponseCode = " + code);
+                        return;
+                    }
+
+                    Map<String, List<String>> headers = connection.getHeaderFields();
+                    if (headers != null && headers.containsKey("Set-Cookie")) {
+                        List<String> cookies = headers.get("Set-Cookie");
+                        for (String value : cookies) {
+                            Log.e(TAG, "value = " + value);
+                        }
+                    } else {
+                        Log.e(TAG, "no Set-Cookie");
+                    }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "[register] " + e.getMessage());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "[register] " + e.getMessage());
+                }
+            }
+        }).start();
     }
 }
