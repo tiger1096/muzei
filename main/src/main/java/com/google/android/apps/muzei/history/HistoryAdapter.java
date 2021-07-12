@@ -52,7 +52,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.Material
             super(v);
             imageView = (ImageView) v.findViewById(R.id.artwork);
             ImageView icon = (ImageView) v.findViewById(R.id.icon);
-            icon.setImageResource(R.drawable.gallery_ic_launcher);
+            icon.setImageResource(R.drawable.bear);
 
             TextView title = (TextView) v.findViewById(R.id.title);
             title.setText("Hello World!");

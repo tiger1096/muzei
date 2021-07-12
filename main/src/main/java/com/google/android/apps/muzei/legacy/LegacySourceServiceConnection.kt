@@ -27,7 +27,6 @@ import android.os.Looper
 import android.os.Message
 import android.os.Messenger
 import android.util.Log
-import com.google.android.apps.muzei.featuredart.BuildConfig.FEATURED_ART_AUTHORITY
 import com.google.android.apps.muzei.legacy.BuildConfig.LEGACY_AUTHORITY
 import com.google.android.apps.muzei.room.Provider
 import com.google.android.apps.muzei.sync.ProviderManager
@@ -61,12 +60,6 @@ internal class LegacySourceServiceConnection(
                     GlobalScope.launch {
                         ProviderManager.select(applicationContext, authority)
                     }
-                }
-                LegacySourceServiceProtocol.WHAT_REPLY_TO_NO_SELECTED_SOURCE -> GlobalScope.launch {
-                    if (BuildConfig.DEBUG) {
-                        Log.d(TAG, "Got no selected source message")
-                    }
-                    ProviderManager.select(applicationContext, FEATURED_ART_AUTHORITY)
                 }
             }
             true
