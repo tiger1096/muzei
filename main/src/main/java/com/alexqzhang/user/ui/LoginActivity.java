@@ -1,10 +1,7 @@
 package com.alexqzhang.user.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -15,11 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alexqzhang.mainpage.ui.MainPageActivity;
-
 import com.mob.MobSDK;
 import com.nice.seeyou.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -28,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import androidx.appcompat.app.AppCompatActivity;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -112,6 +111,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 register();
                 break;
             case R.id.forget_password:
+//                testFetch();
                 forgetPassword();
                 break;
             case R.id.login:
@@ -126,7 +126,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.0.29:8080/march-server/LoginServlet");
+                    URL url = new URL("http://192.168.0.29:8080/march-server/UserManage/Login");
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(5000);
@@ -168,7 +168,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.0.29:8080/march-server/UpdateUser");
+                    URL url = new URL("http://192.168.0.29:8080/march-server/UserManage/UpdateUser");
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(5000);
@@ -192,6 +192,60 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     } else {
                         Log.e(TAG, "no Set-Cookie");
                     }
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "[register] " + e.getMessage());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "[register] " + e.getMessage());
+                }
+            }
+        }).start();
+    }
+
+    private void testFetch() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL("http://192.168.0.29:8080/march-server/Wallpaper/FetchText");
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setConnectTimeout(8000);
+                    connection.setReadTimeout(5000);
+                    for (String value : loginCookies) {
+                        connection.addRequestProperty("Cookie", value);
+                    }
+                    connection.setRequestMethod("POST");
+
+                    int code = connection.getResponseCode();
+                    if (code != HttpURLConnection.HTTP_OK) {
+                        Log.e(TAG, "getResponseCode = " + code);
+                        return;
+                    }
+
+                    Map<String, List<String>> headers = connection.getHeaderFields();
+                    if (headers != null && headers.containsKey("Set-Cookie")) {
+                        List<String> cookies = headers.get("Set-Cookie");
+                        for (String value : cookies) {
+                            Log.e(TAG, "value = " + value);
+                        }
+                    } else {
+                        Log.e(TAG, "no Set-Cookie");
+                    }
+
+                    String status = connection.getHeaderField("NTSY_STATUS");
+                    Log.e(TAG, "NTSY_STATUS = " + status);
+
+                    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                    byte [] buffer = new byte[1024 * 16];
+                    InputStream inputStream = connection.getInputStream();
+
+                    int len = -1;
+                    while ((len = inputStream.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, len);
+                    }
+                    String result = outputStream.toString();
+                    Log.e(TAG, "jsonResult = " + result);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                     Log.e(TAG, "[register] " + e.getMessage());
