@@ -28,6 +28,7 @@ import androidx.multidex.MultiDexApplication
 import com.alexqzhang.service.WallpaperService
 import com.alexqzhang.util.ScreenUtils
 import com.google.android.apps.muzei.settings.Prefs
+import com.nice.storage.SQLiteStorageUtils
 
 class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -61,6 +62,7 @@ class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPrefer
 //        }
 
         ScreenUtils.context = applicationContext;
+        SQLiteStorageUtils.init(this);
     }
 
     fun getProcessName(cxt: Context): String? {
