@@ -30,6 +30,7 @@ import com.alexqzhang.util.ScreenUtils
 import com.google.android.apps.muzei.settings.Prefs
 import com.nice.config.NiceToSeeYouConstant
 import com.nice.storage.SQLiteStorageUtils
+import com.nice.storage.SharedPreferencesUtils
 
 class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -63,6 +64,7 @@ class MuzeiApplication : MultiDexApplication(), SharedPreferences.OnSharedPrefer
 //        }
 
         ScreenUtils.context = applicationContext;
+        SharedPreferencesUtils.setContext(this);
         SQLiteStorageUtils.init(this);
         NiceToSeeYouConstant.setContext(this);
     }

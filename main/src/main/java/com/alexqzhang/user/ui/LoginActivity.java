@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.alexqzhang.mainpage.ui.MainPageActivity;
 import com.mob.MobSDK;
+import com.nice.config.NiceToSeeYouConstant;
 import com.nice.seeyou.R;
+import com.nice.storage.SharedPreferencesUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -145,6 +147,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Map<String, List<String>> headers = connection.getHeaderFields();
                     if (headers != null && headers.containsKey("Set-Cookie")) {
                         List<String> cookies = headers.get("Set-Cookie");
+                        SharedPreferencesUtils.setInt(NiceToSeeYouConstant.SET_COOKIE_NUM, cookies.size());
+                        for (int i = 0; i < cookies.size(); i ++) {
+                            SharedPreferencesUtils.setString(
+                                    NiceToSeeYouConstant.SET_COOKIE + i, cookies.get(i));
+                        }
                         for (String value : cookies) {
                             loginCookies.add(value);
                             Log.e(TAG, "value = " + value);

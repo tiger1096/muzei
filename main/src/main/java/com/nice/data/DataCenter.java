@@ -3,12 +3,19 @@ package com.nice.data;
 import android.os.Handler;
 import android.os.HandlerThread;
 
+import com.nice.config.NTSYBeckend;
+import com.nice.config.NiceToSeeYouConstant;
 import com.nice.entity.Knowledge;
+import com.nice.entity.LearnRecord;
 import com.nice.helper.HttpHelper;
 import com.nice.storage.DataBuffer;
 import com.nice.storage.SQLiteStorageUtils;
 
-import java.util.Collections;
+import org.json.JSONObject;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -43,15 +50,48 @@ public class DataCenter {
         return dataCenter;
     }
 
+    /**
+     * 根据用户学习策略和学习进度，从后台拉取新的学习内容
+     */
     public void fetchKnowledgeFromBackend() {
         httpRequestHandler.post(new Runnable() {
             @Override
             public void run() {
 //                HttpHelper.postForResult();
+                // 1、获取当前用户的学习策略
+                // TODO 目前的用户习惯是固定的，就是获取5篇新的宋词
+
+                // 2、获取当前用户的学习进度
+                List<LearnRecord> records = SQLiteStorageUtils.getQueryByWhereLengthAndOrder(LearnRecord.class,
+                        "user_id", new String[] {"me"}, 0, 1,
+                        "timestamp", true);
+                if (records == null) {
+                    return;
+                }
+
+                int itemId = records.get(0).item_id;
+                List<Knowledge> knowledges = SQLiteStorageUtils.getQueryByWhere(Knowledge.class, "id", new Integer[] {itemId});
+                if (knowledges == null) {
+                    return;
+                }
+
+                // 3、获取后台数据，并解析为Knowledge
+                int progess = knowledges.get(0).knowledge_id;
+                JSONObject jsonObject = new JSONObject();
+                String result = HttpHelper.postForResult(NTSYBeckend.FETCH_KNOWLEDGE, jsonObject);
+
+                List<Knowledge> newKnowledge = null;
+
+                // 4、存入数据库
+                int insertNum = SQLiteStorageUtils.insertAll(newKnowledge);
             }
         });
     }
 
+    /**
+     * 根据当前用户设置的学习策略和学习进度，提供新的学习内容
+     * @param dataBuffer 用户学习内容的缓冲区，系的学习内容将加入到缓冲区中
+     */
     public void provideKnowledge(DataBuffer dataBuffer) {
         if (dataBuffer == null) {
             return;
@@ -70,14 +110,27 @@ public class DataCenter {
                         "id", true
                 );
 
+                if (knowledges == null) {
+                    return;
+                }
+
                 // 3、更新DataBuffer
-                dataBuffer.push(Collections.singletonList(knowledges));
+                List<Object> objects = new ArrayList<>(knowledges.size());
+                for (Knowledge knowledge : knowledges) {
+                    objects.add(knowledge);
+                }
+                dataBuffer.push(objects);
 
             }
         });
     }
 
-    public boolean recordLearnBehaviour() {
+    public boolean recordLearnBehaviour(Knowledge knowledge) {
+        LearnRecord record = new LearnRecord();
+        record.item_id = knowledge.id;
+        record.user_id = NiceToSeeYouConstant.getUserId();
+        record.timestamp = new Timestamp(System.currentTimeMillis());
+        long ret = SQLiteStorageUtils.insert(record);
         return true;
     }
 
