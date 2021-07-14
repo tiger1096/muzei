@@ -16,7 +16,6 @@
 
 package com.google.android.apps.muzei.wallpaper
 
-import android.app.KeyguardManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -24,7 +23,7 @@ import android.content.IntentFilter
 import androidx.core.os.UserManagerCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.alexqzhang.glorious.service.AlexWallpaperService
+import com.nice.render.AlexWallpaperService
 
 /**
  * LifecycleObserver responsible for monitoring the state of the lock screen

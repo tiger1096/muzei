@@ -30,7 +30,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.lifecycleScope
-import com.alexqzhang.glorious.service.AlexWallpaperService
+import com.nice.render.AlexWallpaperService
 import com.google.android.apps.muzei.legacy.LegacySourceManager
 import com.google.android.apps.muzei.legacy.allowsNextArtwork
 import com.google.android.apps.muzei.room.MuzeiDatabase

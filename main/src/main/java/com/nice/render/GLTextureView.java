@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.android.apps.muzei.render;
+package com.nice.render;
 
 import android.content.Context;
 import android.graphics.SurfaceTexture;

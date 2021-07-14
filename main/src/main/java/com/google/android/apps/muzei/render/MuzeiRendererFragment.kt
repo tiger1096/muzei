@@ -38,6 +38,7 @@ import com.google.android.apps.muzei.util.ImageBlurrer
 import com.google.android.apps.muzei.util.blur
 import com.google.android.apps.muzei.util.launchWhenStartedIn
 import com.google.android.apps.muzei.util.roundMult4
+import com.nice.render.GLTextureView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext

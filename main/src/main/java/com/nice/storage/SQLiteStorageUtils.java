@@ -20,7 +20,7 @@ public class SQLiteStorageUtils {
 
     public static void init(Context context) {
         SQLiteStorageUtils.context = context;
-        liteOrm = LiteOrm.newSingleInstance(context, "NTSY");
+        liteOrm = LiteOrm.newSingleInstance(context, "NTSY.db");
     }
 
     public static LiteOrm getLiteOrm() {
@@ -136,6 +136,11 @@ public class SQLiteStorageUtils {
         return getLiteOrm().<T>query(new QueryBuilder(cla).where(field + "=?", value).limit(start, length));
     }
 
+    public static <T> List<T> getQueryByWhereLengthAndOrder(Class<T> cla, String field, String[] value, int start, int length, String order, boolean asc) {
+        return getLiteOrm().<T>query(new QueryBuilder(cla).where(field + "=?", value).limit(start, length).orderBy(order));
+    }
+
+
     /**
      * 删除所有 某字段等于 Vlaue的值
      *
@@ -200,6 +205,10 @@ public class SQLiteStorageUtils {
                 new ColumnsValue(new String[]{updateCol},
                         new Object[]{updateValue}), ConflictAlgorithm.None);
 
+    }
+
+    public static <T> void dropTable(Class<T> cla) {
+        getLiteOrm().dropTable(cla);
     }
 
     @SuppressLint("NewApi")

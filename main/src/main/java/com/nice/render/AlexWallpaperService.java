@@ -1,4 +1,4 @@
-package com.alexqzhang.glorious.service;
+package com.nice.render;
 
 import android.app.WallpaperManager;
 import android.graphics.Bitmap;
@@ -16,10 +16,13 @@ import com.alexqzhang.base.config.TextConfig;
 import com.alexqzhang.base.data.ZFont;
 import com.alexqzhang.print.PrintService;
 import com.alexqzhang.print.utils.BitmapUtil;
+import com.nice.entity.Knowledge;
+import com.nice.storage.SQLiteStorageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Pattern;
 
 
 public class AlexWallpaperService extends WallpaperService {
@@ -164,6 +167,18 @@ public class AlexWallpaperService extends WallpaperService {
             if (action.equals(WallpaperManager.COMMAND_TAP)) {
                 seed = Math.abs((new Random()).nextInt()) % (poems.size());
             }
+
+            SQLiteStorageUtils.dropTable(Knowledge.class);
+
+//            Knowledge knowledge = new Knowledge();
+//            SQLiteStorageUtils.insert(knowledge);
+//
+//            List<Knowledge> knowledges = SQLiteStorageUtils.getQueryAll(Knowledge.class);
+//            if (knowledges != null) {
+//                for (Knowledge k : knowledges)
+//                Log.e("alex", k.id + " = [" + k.knowledge_id + ", " + k.text + "]");
+//            }
+
             return super.onCommand(action, x, y, z, extras, resultRequested);
         }
 

@@ -168,47 +168,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://192.168.0.29:8080/march-server/UserManage/UpdateUser");
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setConnectTimeout(8000);
-                    connection.setReadTimeout(5000);
-                    for (String value : loginCookies) {
-                        connection.addRequestProperty("Cookie", value);
-                    }
-                    connection.setRequestMethod("POST");
-
-                    int code = connection.getResponseCode();
-                    if (code != HttpURLConnection.HTTP_OK) {
-                        Log.e(TAG, "getResponseCode = " + code);
-                        return;
-                    }
-
-                    Map<String, List<String>> headers = connection.getHeaderFields();
-                    if (headers != null && headers.containsKey("Set-Cookie")) {
-                        List<String> cookies = headers.get("Set-Cookie");
-                        for (String value : cookies) {
-                            Log.e(TAG, "value = " + value);
-                        }
-                    } else {
-                        Log.e(TAG, "no Set-Cookie");
-                    }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                    Log.e(TAG, "[register] " + e.getMessage());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e(TAG, "[register] " + e.getMessage());
-                }
-            }
-        }).start();
-    }
-
-    private void testFetch() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    URL url = new URL("http://192.168.0.29:8080/march-server/Wallpaper/FetchText");
+                    URL url = new URL("http://192.168.0.29:8080/march-server/UpdateUser");
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setConnectTimeout(8000);
                     connection.setReadTimeout(5000);

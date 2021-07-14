@@ -24,9 +24,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commitNow
-import com.alexqzhang.glorious.service.AlexWallpaperService
-import com.google.android.apps.muzei.util.AnimatedMuzeiLogoFragment
+import com.nice.render.AlexWallpaperService
 import com.google.android.apps.muzei.util.toast
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics

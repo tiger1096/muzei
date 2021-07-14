@@ -37,6 +37,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <queries>
         <!-- Used to detect the installation of legacy-standalone -->
@@ -83,7 +84,7 @@
         </activity>
 
         <service
-            android:name="com.alexqzhang.glorious.service.AlexWallpaperService"
+            android:name="com.nice.render.AlexWallpaperService"
             android:directBootAware="true"
             android:permission="android.permission.BIND_WALLPAPER"
             tools:targetApi="n">
