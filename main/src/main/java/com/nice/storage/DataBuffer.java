@@ -12,7 +12,11 @@ public class DataBuffer {
 
     public Object pop() {
         synchronized (DataCenter.class) {
-            return dataStack.pop();
+            if (dataStack.size() > 0) {
+                return dataStack.pop();
+            } else {
+                return null;
+            }
         }
     }
 

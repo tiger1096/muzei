@@ -16,10 +16,13 @@ import com.alexqzhang.base.config.TextConfig;
 import com.alexqzhang.base.data.ZFont;
 import com.alexqzhang.print.PrintService;
 import com.alexqzhang.print.utils.BitmapUtil;
+import com.nice.data.DataCenter;
 import com.nice.entity.Knowledge;
+import com.nice.storage.DataBuffer;
 import com.nice.storage.SQLiteStorageUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -29,6 +32,8 @@ public class AlexWallpaperService extends WallpaperService {
 
     private final Handler handler = new Handler();
     private Bitmap bitmap;
+
+    private DataBuffer dataBuffer = new DataBuffer();
 
     @Override
     public void onCreate() {
@@ -83,8 +88,12 @@ public class AlexWallpaperService extends WallpaperService {
             TextConfig textConfig = new TextConfig();
             textConfig.style = 0;
             textConfig.textNum = 2;
-            textConfig.texts = new ArrayList<>();
+//            textConfig.texts = new ArrayList<>();
             textConfig.texts = poems.get(seed);
+            Knowledge knowledge = (Knowledge) dataBuffer.pop();
+            if (knowledge != null && knowledge.text != null) {
+                textConfig.texts = Arrays.asList(knowledge.text.split("。"));
+            }
             textConfig.fonts = new ArrayList<>();
             textConfig.fonts.add(new ZFont(16, 0));
             textConfig.fonts.add(new ZFont(16, 0));
@@ -168,7 +177,10 @@ public class AlexWallpaperService extends WallpaperService {
                 seed = Math.abs((new Random()).nextInt()) % (poems.size());
             }
 
-            SQLiteStorageUtils.dropTable(Knowledge.class);
+            DataCenter.getInstance().fetchKnowledgeFromBackend();
+            DataCenter.getInstance().provideKnowledge(dataBuffer);
+
+//            SQLiteStorageUtils.dropTable(Knowledge.class);
 
 //            Knowledge knowledge = new Knowledge();
 //            SQLiteStorageUtils.insert(knowledge);

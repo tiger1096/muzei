@@ -2,7 +2,10 @@ package com.nice.data;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.text.TextUtils;
+import android.util.Log;
 
+import com.alexqzhang.util.GsonUtils;
 import com.nice.config.NTSYBeckend;
 import com.nice.config.NiceToSeeYouConstant;
 import com.nice.entity.Knowledge;
@@ -15,7 +18,6 @@ import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /*
@@ -28,6 +30,7 @@ import java.util.List;
     6、 设置学习策略：复习策略、拉取策略、提供策略等
  */
 public class DataCenter {
+    private static final String TAG = DataCenter.class.getSimpleName();
 
     private static DataCenter dataCenter = new DataCenter();
     private static final String NTSY_DATA_PROCESS_THREAD = "NTSY_DATA_PROCESS_THREAD";
@@ -63,27 +66,32 @@ public class DataCenter {
 
                 // 2、获取当前用户的学习进度
                 List<LearnRecord> records = SQLiteStorageUtils.getQueryByWhereLengthAndOrder(LearnRecord.class,
-                        "user_id", new String[] {"me"}, 0, 1,
-                        "timestamp", true);
-                if (records == null) {
-                    return;
+                        "user_id", new String[] {String.valueOf(NiceToSeeYouConstant.getUserId())},
+                        0, 1, "timestamp", true);
+
+                int itemId = 0;
+                if (records != null && records.size() > 0) {
+                    itemId = records.get(0).item_id;;
                 }
 
-                int itemId = records.get(0).item_id;
-                List<Knowledge> knowledges = SQLiteStorageUtils.getQueryByWhere(Knowledge.class, "id", new Integer[] {itemId});
-                if (knowledges == null) {
-                    return;
-                }
+//                List<Knowledge> knowledges = SQLiteStorageUtils.getQueryByWhere(Knowledge.class, "id", new Integer[] {itemId});
+//                if (knowledges == null) {
+//                    return;
+//                }
 
                 // 3、获取后台数据，并解析为Knowledge
-                int progess = knowledges.get(0).knowledge_id;
+//                int progess = knowledges.get(0).knowledge_id;
                 JSONObject jsonObject = new JSONObject();
                 String result = HttpHelper.postForResult(NTSYBeckend.FETCH_KNOWLEDGE, jsonObject);
 
                 List<Knowledge> newKnowledge = null;
+                if (!TextUtils.isEmpty(result)) {
+                    newKnowledge = GsonUtils.json2ObjList(result, Knowledge.class);
+                }
 
                 // 4、存入数据库
                 int insertNum = SQLiteStorageUtils.insertAll(newKnowledge);
+                Log.e(TAG, "insertNum = " + insertNum);
             }
         });
     }
@@ -106,11 +114,11 @@ public class DataCenter {
                 // 2、根据策略从学习内容数据中分别检索数据
 
                 List<Knowledge> knowledges = SQLiteStorageUtils.getQueryByWhereLengthAndOrder(
-                        Knowledge.class, "catagory", new String[] {"ci"}, 0, 5,
+                        Knowledge.class, "catagory", new String[] {"SongPhrase"}, 0, 5,
                         "id", true
                 );
 
-                if (knowledges == null) {
+                if (knowledges == null || knowledges.size() == 0) {
                     return;
                 }
 
