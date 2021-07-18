@@ -14,5 +14,5 @@
 
   </FrameLayout>
 
-  <include layout="@layout/bottom"/>
+  <include layout="@layout/tab_bottom"/>
 </LinearLayout>

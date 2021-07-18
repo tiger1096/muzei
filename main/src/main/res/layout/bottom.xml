@@ -90,5 +90,26 @@
             android:textColor="#ffffff"
             android:text="@string/section_me"/>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/id_tab_me"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/me" />
+
+        <ImageButton
+            android:id="@+id/id_tab_me_img"
+            android:clickable="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/tab_settings_normal"
+            android:background="#00000000"/>
+    </LinearLayout>
 
 </LinearLayout>

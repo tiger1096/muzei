@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.alexqzhang.discover.ui.DiscoverFragment;
@@ -19,17 +20,12 @@ import androidx.fragment.app.FragmentTransaction;
 import com.nice.seeyou.R;
 
 public class MainPageActivity extends AppCompatActivity implements OnClickListener {
-    //声明四个Tab的布局文件
-    private LinearLayout mTabWeixin;
-    private LinearLayout mTabFrd;
-    private LinearLayout mTabAddress;
-    private LinearLayout mTabSetting;
 
-    //声明四个Tab的ImageButton
-    private ImageButton mWeixinImg;
-    private ImageButton mFrdImg;
-    private ImageButton mAddressImg;
-    private ImageButton mSettingImg;
+    private ImageView tabHistoryScan;
+    private ImageView tabDiscoverWallpaper;
+    private ImageView tabStartJourney;
+    private ImageView tabDiscoverKnowledge;
+    private ImageView tabMe;
 
     //声明四个Tab分别对应的Fragment
     private Fragment mFragHistory;
@@ -49,24 +45,20 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
 
     private void initEvents() {
         //初始化四个Tab的点击事件
-        mTabWeixin.setOnClickListener(this);
-        mTabFrd.setOnClickListener(this);
-        mTabAddress.setOnClickListener(this);
-        mTabSetting.setOnClickListener(this);
+        tabHistoryScan.setOnClickListener(this);
+        tabDiscoverWallpaper.setOnClickListener(this);
+        tabStartJourney.setOnClickListener(this);
+        tabDiscoverKnowledge.setOnClickListener(this);
+        tabMe.setOnClickListener(this);
     }
 
     private void initViews() {
-        //初始化四个Tab的布局文件
-        mTabWeixin = (LinearLayout) findViewById(R.id.id_tab_weixin);
-        mTabFrd = (LinearLayout) findViewById(R.id.id_tab_frd);
-        mTabAddress = (LinearLayout) findViewById(R.id.id_tab_address);
-        mTabSetting = (LinearLayout) findViewById(R.id.id_tab_setting);
-
-        //初始化四个ImageButton
-        mWeixinImg = (ImageButton) findViewById(R.id.id_tab_weixin_img);
-        mFrdImg = (ImageButton) findViewById(R.id.id_tab_frd_img);
-        mAddressImg = (ImageButton) findViewById(R.id.id_tab_address_img);
-        mSettingImg = (ImageButton) findViewById(R.id.id_tab_setting_img);
+        // 初始化五个Tab的Image按钮
+        tabHistoryScan = findViewById(R.id.tab_history_scan);
+        tabDiscoverWallpaper = findViewById(R.id.tab_discover_wallpaper);
+        tabStartJourney = findViewById(R.id.tab_start_journey);
+        tabDiscoverKnowledge = findViewById(R.id.tab_discover_knowledge);
+        tabMe = findViewById(R.id.tab_me);
     }
 
     //处理Tab的点击事件
@@ -75,17 +67,20 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
         //先将四个ImageButton置为灰色
         resetImgs();
         switch (v.getId()) {
-            case R.id.id_tab_weixin:
+            case R.id.tab_history_scan:
                 selectTab(0);//当点击的是微信的Tab就选中微信的Tab
                 break;
-            case R.id.id_tab_frd:
+            case R.id.tab_discover_wallpaper:
                 selectTab(1);
                 break;
-            case R.id.id_tab_address:
+            case R.id.tab_start_journey:
                 selectTab(2);
                 break;
-            case R.id.id_tab_setting:
+            case R.id.tab_discover_knowledge:
                 selectTab(3);
+                break;
+            case R.id.tab_me:
+                selectTab(4);
                 break;
         }
 
@@ -103,7 +98,7 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
             //当选中点击的是微信的Tab时
             case 0:
                 //设置微信的ImageButton为绿色
-                mWeixinImg.setImageResource(R.mipmap.tab_weixin_pressed);
+                tabHistoryScan.setBackgroundResource(R.drawable.history_scan_selected);
                 //如果微信对应的Fragment没有实例化，则进行实例化，并显示出来
                 if (mFragHistory == null) {
                     mFragHistory = new HistoryFragment();
@@ -114,7 +109,7 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
                 }
                 break;
             case 1:
-                mFrdImg.setImageResource(R.mipmap.tab_find_frd_pressed);
+                tabDiscoverWallpaper.setBackgroundResource(R.drawable.discover_wallpaper_selected);
                 if (mFragDiscover == null) {
                     mFragDiscover = new DiscoverFragment();
                     transaction.add(R.id.id_content, mFragDiscover);
@@ -123,7 +118,7 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
                 }
                 break;
             case 2:
-                mAddressImg.setImageResource(R.mipmap.tab_address_pressed);
+                tabStartJourney.setBackgroundResource(R.drawable.start_journey_selected);
                 if (mFragCommunity == null) {
                     mFragCommunity = new AddressFragment();
                     transaction.add(R.id.id_content, mFragCommunity);
@@ -132,7 +127,16 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
                 }
                 break;
             case 3:
-                mSettingImg.setImageResource(R.mipmap.tab_settings_pressed);
+                tabDiscoverKnowledge.setBackgroundResource(R.drawable.discover_knowledge_selected);
+                if (mFragCommunity == null) {
+                    mFragCommunity = new AddressFragment();
+                    transaction.add(R.id.id_content, mFragCommunity);
+                } else {
+                    transaction.show(mFragCommunity);
+                }
+                break;
+            case 4:
+                tabMe.setBackgroundResource(R.drawable.me_selected);
                 if (mFragSetting == null) {
                     mFragSetting = new SettingFragment();
                     transaction.add(R.id.id_content, mFragSetting);
@@ -163,9 +167,10 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
 
     //将四个ImageButton置为灰色
     private void resetImgs() {
-        mWeixinImg.setImageResource(R.mipmap.tab_weixin_normal);
-        mFrdImg.setImageResource(R.mipmap.tab_find_frd_normal);
-        mAddressImg.setImageResource(R.mipmap.tab_address_normal);
-        mSettingImg.setImageResource(R.mipmap.tab_settings_normal);
+        tabHistoryScan.setBackgroundResource(R.drawable.history_scan);
+        tabDiscoverWallpaper.setBackgroundResource(R.drawable.discover_wallpaper);
+        tabStartJourney.setBackgroundResource(R.drawable.start_journey);
+        tabDiscoverKnowledge.setBackgroundResource(R.drawable.discover_knowledge);
+        tabMe.setBackgroundResource(R.drawable.me);
     }
 }
