@@ -16,6 +16,11 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <style name="Nice.BaseTheme" parent="Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="FullScreenTheme">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>

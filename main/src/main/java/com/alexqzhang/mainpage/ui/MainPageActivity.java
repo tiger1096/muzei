@@ -1,23 +1,22 @@
 package com.alexqzhang.mainpage.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.alexqzhang.discover.ui.DiscoverFragment;
 import com.alexqzhang.history.ui.HistoryFragment;
 import com.alexqzhang.me.ui.SettingFragment;
+import com.alexqzhang.util.StatusBarUtil;
+import com.nice.seeyou.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import com.nice.seeyou.R;
 
 public class MainPageActivity extends AppCompatActivity implements OnClickListener {
 
@@ -37,6 +36,9 @@ public class MainPageActivity extends AppCompatActivity implements OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            StatusBarUtil.setStatusBarMode(this, true, R.color.colorWhite);
+        }
         setContentView(R.layout.activity_main_page);
         initViews();//初始化控件
         initEvents();//初始化事件
